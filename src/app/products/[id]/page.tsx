@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default function ProductDetail({ params }: Props) {
-  const product = getProduct(params.id);
+  const product = Products.get(params.id);
   if (!product) notFound();
   return (
     <>
