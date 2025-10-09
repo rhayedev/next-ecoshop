@@ -1,16 +1,26 @@
 "use client";
+
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
-  const pathname = usePathname();
-  const isActive = (href: string) => (pathname === href ? "active" : "");
+  const t = useTranslations("nav");
 
   return (
     <header className="site-header">
       <nav className="nav">
-        <Link className={isActive("/")} href="/">Accueil</Link>
-        <Link className={isActive("/products")} href="/products">Produits</Link>
+        <Link className={t('/')} href="/">
+          Accueil
+        </Link>
+        <Link className={t('/products')} href="/products">
+          Produits
+        </Link>
+        <Link className={t('/blog')} href="/blog">
+          Blog
+        </Link>
+        <Link className={t('/about')} href="/about">
+          A propos
+        </Link>
       </nav>
     </header>
   );
