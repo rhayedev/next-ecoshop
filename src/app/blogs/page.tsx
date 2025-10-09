@@ -12,9 +12,10 @@ export default function ProductsPage() {
         <ul className="flex-wrap flex gap-5">
             {blogs.map((b) => (
                 <li key={b.id}>
-                    <Link href={`/products/${b.id}`}></Link>
+                    <Link href={`/blogs/${b.id}`}></Link>
                 </li>
             ))}
+            <p>daaaaaaaaaaaa</p>
         </ul>
     );
 }

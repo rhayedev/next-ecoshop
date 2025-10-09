@@ -24,7 +24,7 @@ export default function Header() {
                     name=""
                     id=""
                 />
-                <Link className={isActive("/bag")} href="/products">
+                <Link className={isActive("/bag")} href="/bag">
                     Bag
                 </Link>
             </nav>

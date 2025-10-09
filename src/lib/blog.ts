@@ -3,12 +3,12 @@ export type Blogs = { id: string; name: string; text: string };
 const DB: Blogs[] = [
     {
         id: "1",
-        name: "Clavier Mécanique",
+        name: "Quels clavier choisir ?",
         text: "laaaaaaaaaaaaaaaaaaaaadefnajegbahvgfvscbasjicnsaodnj",
     },
     {
         id: "2",
-        name: "Clavier Bureautique",
+        name: "Quel ?",
         text: "laaaaaaaaaaaaaaaaaaaaadefnajegbahvgfvscbasjicnsaodnj",
     },
 ];
