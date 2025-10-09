@@ -14,11 +14,8 @@ export default function HeaderLink({ title, href }: HeaderLinkProps) {
     const { t } = useTranslation();
 
     return (
-        <Link
-            href={href}
-            className="group relative w-24 gap-1 flex-col flex-center"
-        >
-            <p>{t(title)}</p>
+        <Link href={href} className="group relative w-24 gap-1">
+            <p className="w-full h-fit flex-center">{t(title)}</p>
             <hr
                 className={`group-hover:w-full -bottom-2 absolute w-0 border-none h-1 trans-fast
                 ${isActive(href) ? "bg-violet-300 w-full" : "bg-gray-200"}
