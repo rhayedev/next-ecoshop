@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 :root {
 	--border: #eee;
@@ -24,20 +22,4 @@ body {
 	max-width: 960px;
 	margin: 0 auto;
 	padding: var(--gap);
-}
-.site-header {
-	padding: var(--pad);
-	border-bottom: 1px solid var(--border);
-}
-.nav {
-	display: flex;
-	gap: var(--gap);
-}
-.site-footer {
-	margin-top: 24px;
-	padding: var(--pad);
-	border-top: 1px solid var(--border);
-}
-.active {
-	text-decoration: underline;
 }
