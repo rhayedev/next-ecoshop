@@ -1,6 +1,6 @@
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section style={{ background: "#f0f4f8", padding: "2rem", borderRadius: "1rem" }}>
+    <section className="marketing-layout">
       <header>
         <h2>Marketing</h2>
       </header>

@@ -9,8 +9,8 @@ export default function LangSwitch() {
   const [lang, setLang] = useState<"fr" | "en">("fr");
 
   return (
-    <div style={{ marginBottom: 32 }}>
-      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+    <div className="lang-switch">
+      <div className="lang-switch-buttons">
         <button onClick={() => setLang("fr")} disabled={lang === "fr"}>FR</button>
         <button onClick={() => setLang("en")} disabled={lang === "en"}>EN</button>
       </div>
