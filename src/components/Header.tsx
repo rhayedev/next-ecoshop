@@ -15,6 +15,9 @@ export default function Header() {
 				<Link className={isActive('/products')} href="/products">
 					Produits
 				</Link>
+				<Link className={isActive('/about')} href="/about">
+					A propos
+				</Link>
 			</nav>
 		</header>
 	);
