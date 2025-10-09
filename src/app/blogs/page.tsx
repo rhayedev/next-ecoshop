@@ -15,7 +15,6 @@ export default function ProductsPage() {
                     <Link href={`/blogs/${b.id}`}></Link>
                 </li>
             ))}
-            <p>daaaaaaaaaaaa</p>
         </ul>
     );
 }

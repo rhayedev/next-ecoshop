@@ -2,5 +2,8 @@
     "home": "Acceuil",
     "blogs": "Blog",
     "store": "magasin",
-    "bags": "Sac"
+    "bag": "Sac",
+    "storePage": {
+        "products" : "Produits"
+    }
 }

@@ -33,8 +33,8 @@ export default function RootLayout({
                 <Header />
                 <div className="bg-[#fffcfc] py-5 px-40 h-full rounded-xl">
                     {children}
-                    <Footer />
                 </div>
+                <Footer />
             </body>
         </html>
     );

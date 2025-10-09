@@ -2,5 +2,8 @@
     "home": "Home",
     "blogs": "Blogs",
     "store": "Store",
-    "bag": "Bag"
+    "bag": "Bag",
+    "storePage": {
+        "products" : "Products"
+    }
 }
