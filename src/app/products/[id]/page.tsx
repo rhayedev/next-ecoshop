@@ -1,5 +1,6 @@
 import { Products } from "@/app/lib/products";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 type Props = { params: { id: string } };
 
@@ -16,6 +17,7 @@ export default function ProductDetail({ params }: Props) {
     <>
       <h3>{product.name}</h3>
       <p>Prix : {product.price} €</p>
+      <Link href="/products" className="btn">← Retour aux produits</Link>
     </>
   );
 }

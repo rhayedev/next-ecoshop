@@ -1,1 +1,5 @@
-{ "nav.home": "Home", "nav.products": "Products", "home.title": "Welcome to Next Shop" }
+{
+    "nav.home": "Home",
+    "nav.products": "Products",
+    "home.title": "Welcome to Next Shop"
+}
