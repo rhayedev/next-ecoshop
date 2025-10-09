@@ -1,1 +1,6 @@
-{ "nav.home": "Accueil", "nav.products": "Produits", "home.title": "Bienvenue sur Next Shop" }
+{
+    "home": "Acceuil",
+    "blogs": "Blog",
+    "store": "magasin",
+    "bags": "Sac"
+}

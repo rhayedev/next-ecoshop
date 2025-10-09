@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/header";
@@ -27,11 +28,13 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} bg-[#151415] min-h-screen text-white antialiased px-40`}
+                className={`${geistSans.variable} ${geistMono.variable} p-5 bg-[#0c0c0c] min-h-screen text-black antialiased`}
             >
                 <Header />
-                {children}
-                <Footer />
+                <div className="bg-[#fffcfc] py-5 px-40 h-full rounded-xl">
+                    {children}
+                    <Footer />
+                </div>
             </body>
         </html>
     );
