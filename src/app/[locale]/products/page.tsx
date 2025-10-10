@@ -3,7 +3,7 @@ import { Products } from "@/app/lib/products";
 import "@/app/styles/products.css";
 
 export const metadata = {
-  title: "Next Shop — Produits",
+  title: "Next Shop - Produits",
   description: "Liste des produits",
 };
 
