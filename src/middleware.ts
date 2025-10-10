@@ -1,0 +1,1 @@
+export { default, config } from './middlewares/i18n-middleware';

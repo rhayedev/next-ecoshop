@@ -1,21 +1,10 @@
-import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "@/styles/globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
-export const metadata: Metadata = {
-  title: "Next Shop — Home",
-  description: "Demo Next.js TS: routing, SEO, layouts, errors, i18n",
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr">
-      <body>
-        <Header />
-        <main className="container">{children}</main>
-        <Footer />
-      </body>
+    <html lang="fr" suppressHydrationWarning>
+      <body>{children}</body>
     </html>
   );
 }
