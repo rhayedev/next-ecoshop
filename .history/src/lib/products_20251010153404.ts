@@ -3,7 +3,7 @@ export type Product = {
   name: string;
   price: number;
   image: string;
-  description: string;
+  description: string; // ← AJOUTE cette ligne
 };
 
 const DB: Product[] = [

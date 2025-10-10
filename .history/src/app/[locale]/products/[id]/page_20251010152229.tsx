@@ -4,7 +4,7 @@ import { Products } from "@/lib/products";
 type Props = { params: { id: string; locale?: string } };
 
 export default function ProductDetail({ params }: Props) {
-  const product = Products.get(params.id);
+  const product = Products.getById(params.id);
 
   if (!product) {
     throw new Error("Produit introuvable");

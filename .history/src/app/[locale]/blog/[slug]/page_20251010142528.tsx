@@ -29,13 +29,9 @@ export default function BlogPost({ params }: Props) {
   if (!post) throw new Error("Article introuvable");
 
   return (
-    <article className="blog-article">
-      <h1 className="blog-title">{post.title}</h1>
-      {post.excerpt && <div className="blog-excerpt">{post.excerpt}</div>}
-      <div
-        className="blog-content"
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
+    <article>
+      <h1>{post.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </article>
   );
 }
