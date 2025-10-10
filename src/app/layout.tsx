@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { NextIntlClientProvider } from "next-intl";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -30,11 +31,13 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} p-5 bg-[#0c0c0c] min-h-screen text-black antialiased`}
             >
-                <Header />
-                <div className="bg-[#fffcfc] py-5 px-40 h-full rounded-xl">
-                    {children}
-                </div>
-                <Footer />
+                <NextIntlClientProvider>
+                    <Header />
+                    <div className="bg-[#fffcfc] py-5 px-40 h-full rounded-xl">
+                        {children}
+                    </div>
+                    <Footer />
+                </NextIntlClientProvider>
             </body>
         </html>
     );
