@@ -1,30 +1,24 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { notFound } from 'next/navigation';
-//import { getTranslator } from 'next-intl/server';
-import '@/styles/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import '@/styles/globals.css';
 
-export default async function LocaleLayout({
+export default async function LocaleRootLayout({
 	children,
-	params: { locale },
+	params,
 }: {
 	children: React.ReactNode;
 	params: { locale: string };
 }) {
-	let messages;
-	try {
-		messages = (await import(`@/messages/${locale}.json`)).default;
-	} catch {
-		notFound();
-	}
+	const { locale } = params;
+	const messages = (await import(`../../messages/${locale}.json`)).default;
 
 	return (
 		<html lang={locale}>
-			<body>
+			<body className="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 				<NextIntlClientProvider locale={locale} messages={messages}>
 					<Header />
-					<main className="container">{children}</main>
+					<main className="flex-1 container mx-auto px-6 py-12">{children}</main>
 					<Footer />
 				</NextIntlClientProvider>
 			</body>
