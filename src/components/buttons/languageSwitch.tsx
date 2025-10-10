@@ -37,7 +37,6 @@ export default function LanguageSelector() {
     }, []);
 
     const changeLanguage = (langCode: string) => {
-        // Remplace juste le segment de locale dans le chemin
         const segments = pathname.split("/");
         segments[1] = langCode;
         const newPath = segments.join("/");

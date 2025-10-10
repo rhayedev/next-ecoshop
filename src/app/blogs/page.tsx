@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function BlogListPage() {
     return (
-        <main className="p-8">
+        <main className="mb-20">
             <h1 className="text-2xl font-bold mb-6">Liste des articles</h1>
 
             <ul className="flex flex-wrap gap-10">
@@ -16,7 +16,7 @@ export default function BlogListPage() {
                     <Link
                         href={`/blogs/${post.slug}`}
                         key={post.slug}
-                        className="p-4 text-blue-600 text-xl ring-2 ring-blue-400 ring-offset-4 ring-offset-white bg-blue-100 w-60 flex-center h-20 rounded-3xl shadow-md trans-fast hover:bg-blue-50 hover:scale-105"
+                        className="p-4 border-l-2 border-l-blue-500 text-blue-600 text-xl bg-blue-100 w-60 flex items-center h-20 rounded-e-3xl shadow-md trans-fast hover:bg-blue-50 hover:scale-105"
                     >
                         {post.title}
                     </Link>
