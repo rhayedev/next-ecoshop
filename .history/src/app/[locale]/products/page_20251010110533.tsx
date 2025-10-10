@@ -22,20 +22,19 @@ export default function ProductsPage({ params }: Props) {
   return (
     <main className="products-main">
       <h1 className="products-title">{messages.products.title}</h1>
-<ul className="products-list grid">
-  {products.map(p => (
-    <li key={p.id} className="product-card">
-      <Link href={`/${params.locale}/products/${p.id}`} className="product-link">
-        <img src={p.image} alt={p.name} className="product-img" />
-        <div className="product-info">
-          <span className="product-name">{p.name}</span>
-          <span className="product-price">{p.price} €</span>
-        </div>
-        <span className="product-arrow">→</span>
-      </Link>
-    </li>
-  ))}
-</ul>
+      <ul className="products-list">
+        {products.map(p => (
+          <li key={p.id} className="product-card">
+            <Link href={`/${params.locale}/products/${p.id}`} className="product-link">
+              <div className="product-info">
+                <span className="product-name">{p.name}</span>
+                <span className="product-price">{p.price} €</span>
+              </div>
+              <span className="product-arrow">→</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }

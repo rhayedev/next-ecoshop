@@ -30,23 +30,23 @@ export default function Header({
           <span role="img" aria-label="leaf">🌿</span> EcoShop
         </Link>
         <nav className="header-nav">
-          {navLinks.map(
-            link =>
-              link.label && (
-                <Link
-                  key={link.href}
-                  href={`/${locale}${link.href === "/" ? "" : link.href}`}
-                  className={
-                    pathname === `/${locale}${link.href === "/" ? "" : link.href}`
-                      ? "header-link active"
-                      : "header-link"
-                  }
-                >
-                  {link.label}
-                </Link>
-              )
-          )}
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              href={`/${locale}${link.href === "/" ? "" : link.href}`}
+              className={
+                pathname === `/${locale}${link.href === "/" ? "" : link.href}`
+                  ? "header-link active"
+                  : "header-link"
+              }
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
+        <Link href={`/${locale}/products`} className="header-cta">
+          {locale === "fr" ? "Voir les produits" : "See products"}
+        </Link>
       </div>
     </header>
   );

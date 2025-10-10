@@ -20,7 +20,7 @@ body {
 
 .app-main {
   flex: 1 0 auto;
-  display: block;
+  display: blocck;
   flex-direction: column;
 }
 .site-footer {
@@ -340,7 +340,7 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.2rem;
 }
 
@@ -350,7 +350,7 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
   box-shadow: 0 2px 8px rgba(52, 112, 173, 0.07);
   transition: box-shadow 0.18s, transform 0.18s;
   overflow: hidden;
-  display: block;
+  display: flex;
 }
 
 .product-link {
@@ -359,7 +359,7 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  padding: 0 1.3rem 1.1rem 1.3rem; /* padding haut à 0 */
+  padding: 1.1rem 1.3rem;
   color: #1a365d;
   text-decoration: none;
   transition: background 0.15s;
@@ -409,7 +409,11 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
   .products-title {
     font-size: 1.5rem;
   }
-
+  .products-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 1.2rem !important;
+}
 }
 
 .product-detail-main {
@@ -462,27 +466,4 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
   background: #e0eafc;
   color: #38b2ac;
   transform: translateY(-2px) scale(1.03);
-}
-
-.product-img {
-  width: 100%;
-  height: 220px;           /* Essaie 180px, 200px ou 220px selon ton besoin */
-  object-fit: cover;       /* Remplit le cadre sans bandes */
-  border-radius: 0.9rem 0.9rem 0 0;
-  margin-bottom: 0.7rem;
-  background: #e0eafc;
-  display: block;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.product-detail-img {
-  width: 100%;
-  max-width: 320px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 1rem;
-  margin: 0 auto 1.2rem auto;
-  background: #e0eafc;
-  display: block;
 }

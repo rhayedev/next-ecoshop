@@ -17,7 +17,6 @@ export default function ProductDetail({ params }: Props) {
   return (
     <main className="product-detail-main">
       <div className="product-detail-card">
-        <img src={product.image} alt={product.name} className="product-detail-img" />
         <h1 className="product-detail-title">{product.name}</h1>
         <div className="product-detail-price">{product.price} €</div>
         <Link

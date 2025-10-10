@@ -34,7 +34,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={loader === MESSAGE_LOADERS.fr ? 'fr' : locale} messages={messages}>
       <Header locale={locale} messages={messages} />
-      <main className="app-main">{children}</main>
+      <main className="container">{children}</main>
       <Footer />
     </NextIntlClientProvider>
   );

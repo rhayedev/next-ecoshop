@@ -466,8 +466,8 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
 
 .product-img {
   width: 100%;
-  height: 220px;           /* Essaie 180px, 200px ou 220px selon ton besoin */
-  object-fit: cover;       /* Remplit le cadre sans bandes */
+  height: 160px;
+  object-fit: cover;
   border-radius: 0.9rem 0.9rem 0 0;
   margin-bottom: 0.7rem;
   background: #e0eafc;
