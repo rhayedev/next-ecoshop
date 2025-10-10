@@ -13,6 +13,7 @@ export default function Header() {
 					<Link href="/">{t('home')}</Link>
 					<Link href="/products">{t('products')}</Link>
 					<Link href="/about">{t('about')}</Link>
+					<Link href="/blog">{t('blog')}</Link>
 				</nav>
 			</div>
 		</header>

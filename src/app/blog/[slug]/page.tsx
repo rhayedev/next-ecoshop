@@ -1,49 +1,45 @@
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Articles } from '@/lib/articles';
 
-type BlogPageProps = {
-	params: Promise<{ slug: string }>;
-};
+type Props = { params: Promise<{ slug: string }> };
 
-export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+export async function generateStaticParams() {
+	return Articles.list().map((article) => ({ slug: article.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug } = await params;
 	const article = Articles.get(slug);
-
 	if (!article) {
-		return {
-			title: 'Article introuvable | Mon Blog',
-			description: "Cet article n'existe pas ou a été supprimé.",
-		};
+		return { title: 'Article introuvable | Blog', description: '' };
 	}
-
 	return {
-		title: `${article.title} | Mon Blog`,
-		description: article.description,
+		title: `${article.title} | Blog`,
+		description: article.title,
 		openGraph: {
 			title: article.title,
-			description: article.description,
+			description: article.title,
 			type: 'article',
 			url: `https://mon-site.fr/blog/${slug}`,
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title: article.title,
-			description: article.description,
+			description: article.title,
 		},
 	};
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogPage({ params }: Props) {
 	const { slug } = await params;
 	const article = Articles.get(slug);
-
 	if (!article) notFound();
 
 	return (
-		<article className="space-y-6 max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+		<article className="max-w-3xl mx-auto py-12 px-6 space-y-6 prose prose-lg text-gray-800">
 			<h1 className="text-3xl font-bold text-blue-600">{article.title}</h1>
-			<p className="text-gray-700">{article.content}</p>
+			<div dangerouslySetInnerHTML={{ __html: article.html }} />
 		</article>
 	);
 }

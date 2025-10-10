@@ -1,5 +1,11 @@
 {
-	"nav": { "home": "Accueil", "products": "Produits", "about": "À propos" },
+	"nav": {
+		"home": "Accueil",
+		"products": "Produits",
+		"about": "À propos",
+		"blog": "Blog",
+		"news": "Actus"
+	},
 	"home": {
 		"title": "Bienvenue sur Next Shop",
 		"description": "Exemple Next.js + TypeScript : routing, SEO, layouts, erreurs, i18n."

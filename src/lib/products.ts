@@ -5,7 +5,9 @@ let DB: Product[] = [];
 export const Products = {
 	list: async (): Promise<Product[]> => {
 		if (DB.length === 0) {
-			const res = await fetch('https://fakestoreapi.com/products?limit=100');
+			const res = await fetch('https://fakestoreapi.com/products?limit=100', {
+				cache: 'no-store',
+			});
 			const data: any[] = await res.json();
 
 			DB = data.map((item) => ({

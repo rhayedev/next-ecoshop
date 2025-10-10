@@ -5,36 +5,36 @@ import type { Metadata } from 'next';
 
 type Props = { params: Promise<{ id: string }> };
 
-async function getProduct(id: string) {
-	return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(Products.get(id));
-		}, 200);
-	});
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { id } = await params;
-	const p = (await getProduct(id)) as Awaited<ReturnType<typeof Products.get>>;
 
-	if (!p) {
+	try {
+		const p = await Products.get(id);
+		if (!p) throw new Error('Not found');
+
+		return {
+			title: `${p.name} — Next Shop`,
+			description: `Acheter ${p.name} à ${p.price} €`,
+		};
+	} catch {
 		return {
 			title: 'Produit introuvable — Next Shop',
 			description: 'Le produit demandé est introuvable.',
 		};
 	}
-
-	return {
-		title: `${p.name} — Next Shop`,
-		description: `Acheter ${p.name} à ${p.price} €`,
-	};
 }
 
 export default async function ProductDetail({ params }: Props) {
 	const { id } = await params;
-	const product = (await getProduct(id)) as Awaited<ReturnType<typeof Products.get>>;
 
-	if (!product) notFound();
+	let product;
+	try {
+		product = await Products.get(id);
+
+		if (!product) notFound();
+	} catch (err) {
+		throw new Error(`Erreur serveur : impossible de charger le produit ${id}`);
+	}
 
 	return (
 		<article className="max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-8 border border-gray-100">

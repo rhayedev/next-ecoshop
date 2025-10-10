@@ -21,7 +21,7 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
 						className="block p-4 border rounded-lg hover:shadow-lg transition"
 					>
 						<h2 className="text-xl font-semibold text-blue-600">{article.title}</h2>
-						<p className="text-gray-700 mt-2">{article.description}</p>
+						<p className="text-gray-700 mt-2">{article.html}</p>
 					</Link>
 				))}
 			</div>

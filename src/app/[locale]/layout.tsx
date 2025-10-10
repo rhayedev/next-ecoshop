@@ -8,9 +8,9 @@ export default async function LocaleRootLayout({
 	params,
 }: {
 	children: React.ReactNode;
-	params: { locale: string };
+	params: Promise<{ locale: string }>;
 }) {
-	const { locale } = params;
+	const { locale } = await params;
 	const messages = (await import(`../../messages/${locale}.json`)).default;
 
 	return (
