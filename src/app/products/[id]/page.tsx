@@ -3,7 +3,7 @@ import { Products } from '@/lib/products';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
-type Props = { params: { id: string } };
+type Props = { params: Promise<{ id: string }> };
 
 async function getProduct(id: string) {
 	return new Promise((resolve) => {
@@ -14,13 +14,16 @@ async function getProduct(id: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const p = (await getProduct(params.id)) as Awaited<ReturnType<typeof Products.get>>;
+	const { id } = await params;
+	const p = (await getProduct(id)) as Awaited<ReturnType<typeof Products.get>>;
+
 	if (!p) {
 		return {
 			title: 'Produit introuvable — Next Shop',
 			description: 'Le produit demandé est introuvable.',
 		};
 	}
+
 	return {
 		title: `${p.name} — Next Shop`,
 		description: `Acheter ${p.name} à ${p.price} €`,
@@ -28,7 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductDetail({ params }: Props) {
-	const product = (await getProduct(params.id)) as Awaited<ReturnType<typeof Products.get>>;
+	const { id } = await params;
+	const product = (await getProduct(id)) as Awaited<ReturnType<typeof Products.get>>;
+
 	if (!product) notFound();
 
 	return (
