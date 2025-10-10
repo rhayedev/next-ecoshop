@@ -3,8 +3,7 @@ import { Products } from "@/lib/products";
 
 type Props = { params: { id: string; locale?: string } };
 
-export default async function ProductDetail(props: Props) {
-  const { params } = await props;
+export default function ProductDetail({ params }: Props) {
   const product = Products.get(params.id);
 
   if (!product) {

@@ -13,10 +13,7 @@ type Props = { params: { id: string; locale: string } };
 export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
-export default async function NewsPage(props: Props) {
-  const { params } = await props;
-  const { id, locale } = params;
-
+export default async function NewsPage({ params }: Props) {
   // Utilise une URL absolue côté serveur
   const baseUrl =
     process.env.VERCEL_URL
@@ -28,14 +25,14 @@ export default async function NewsPage(props: Props) {
   if (!res.ok) notFound();
 
   const news: NewsItem[] = await res.json();
-  const article = news.find((n) => n.id === id);
+  const article = news.find((n) => n.id === params.id);
   if (!article) notFound();
 
   return (
     <article className="news-article">
       <h1 className="news-title">{article.title}</h1>
       <span className="news-meta">
-        Publié le {new Date(article.date).toLocaleDateString(locale)}
+        Publié le {new Date(article.date).toLocaleDateString(params.locale)}
       </span>
       <p className="news-excerpt">{article.excerpt}</p>
       {article.content && (

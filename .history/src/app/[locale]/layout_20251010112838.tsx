@@ -20,8 +20,13 @@ const MESSAGE_LOADERS: Record<string, () => Promise<{ default: Messages }>> = {
   en: () => import('@/messages/en.json'),
 };
 
-export default async function LocaleLayout(props: { children: ReactNode; params: { locale: string } }) {
-  const { params, children } = await props;
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: { locale: string };
+}) {
   const { locale } = params;
   const loader = MESSAGE_LOADERS[locale] ?? MESSAGE_LOADERS.fr;
   const messages = (await loader()).default;

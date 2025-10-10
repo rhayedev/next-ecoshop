@@ -15,8 +15,7 @@ export async function generateStaticParams() {
 }
 
 // Bonus : meta dynamique
-export async function generateMetadata(props: Props) {
-  const { params } = await props;
+export async function generateMetadata({ params }: Props) {
   const post = (posts as BlogPost[]).find((p) => p.slug === params.slug);
   if (!post) return {};
   return {
@@ -25,8 +24,7 @@ export async function generateMetadata(props: Props) {
   };
 }
 
-export default async function BlogPost(props: Props) {
-  const { params } = await props;
+export default function BlogPost({ params }: Props) {
   const post = (posts as BlogPost[]).find((p) => p.slug === params.slug);
   if (!post) throw new Error("Article introuvable");
 

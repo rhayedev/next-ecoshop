@@ -14,8 +14,7 @@ function getMessages(locale: string) {
   }
 }
 
-export default async function LocaleHomePage(props: Props) {
-  const { params } = await props;
+export default function LocaleHomePage({ params }: Props) {
   const messages = getMessages(params.locale);
 
   return (
