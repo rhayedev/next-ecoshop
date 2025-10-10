@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "hello-next",
+    "title": "Hello Next",
+    "html": "<p>Bienvenue dans Next.js 15.</p>"
+  },
+  {
+    "slug": "isr-guide",
+    "title": "Guide ISR",
+    "html": "<p>Comprendre revalidate et les tags.</p>"
+  }
+]
