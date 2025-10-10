@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Products } from "../../lib/products";
 import HearthLogo from "@/components/icon/heartLogo";
 import { getTranslations } from "next-intl/server";
+import FetchProducts from "@/lib/ssrFetch";
 
 export const metadata = {
     title: "Next Shop — Produits",
@@ -9,12 +9,12 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
-    const products = Products.list();
+    const products = await FetchProducts();
     const t = await getTranslations("products");
 
     return (
         <ul className="flex-wrap flex justify-center gap-5">
-            {products.map((p) => (
+            {products.map((p: any) => (
                 <li key={p.id}>
                     <Link href={`/products/${p.id}`}>
                         <div className="w-72 bg-gray-100 rounded-2xl p-6 overflow-hidden aspect-[9:16] group flex flex-col gap-2 relative">
@@ -24,6 +24,7 @@ export default async function ProductsPage() {
                                     {p.price} €
                                 </p>
                             </div>
+
                             <div className="overflow-hidden p-10 rounded-xl bg-gray-100">
                                 <img
                                     src="https://cdn.cultura.com/cdn-cgi/image/width=830/media/pim/6925281988219.png"

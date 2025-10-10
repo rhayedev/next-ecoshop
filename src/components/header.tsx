@@ -13,6 +13,7 @@ export default function Header() {
                 <HeaderLink href="/blogs" title="blogs" />
                 <HeaderLink href="/products" title="products" />
                 <HeaderLink href="/bags" title="bag" />
+                <HeaderLink href="/news" title="news" />
                 <HeaderSearch />
             </nav>
             <div className="bg-transparent flex justify-between w-full absolute top-14 h-10">

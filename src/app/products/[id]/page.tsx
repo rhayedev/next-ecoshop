@@ -1,24 +1,28 @@
-import { Products } from "@/lib/products";
+import FetchProducts from "@/lib/ssrFetch";
 import { notFound } from "next/navigation";
 
-type Props = { params: { id: string } };
-
-export async function generateMetadata({ params }: Props) {
-    const p = Products.get(params.id);
-    if (!p) return { title: "Produit introuvable — Next Shop" };
-    return {
-        title: `${p.name} — Next Shop`,
-        description: `Acheter ${p.name} à ${p.price} €`,
-    };
+export async function generateStaticParams() {
+    const products = await FetchProducts();
+    return products.map((p: any) => ({
+        id: p.id.toString(),
+    }));
 }
 
-export default function ProductDetail({ params }: Props) {
-    const product = Products.get(params.id);
-    if (!product) notFound();
-    return (
-        <>
-            <h3>{product.name}</h3>
-            <p>Prix : {product.price} €</p>
-        </>
-    );
+export default async function ProductPage({
+    params,
+}: {
+    params: { id: string };
+}) {
+    try {
+        const product = await FetchProducts(params.id);
+
+        return (
+            <article className="p-8 space-y-3">
+                <h1 className="text-2xl font-semibold">{product.name}</h1>
+                <p className="text-gray-500">Prix : {product.price}€</p>
+            </article>
+        );
+    } catch {
+        notFound();
+    }
 }

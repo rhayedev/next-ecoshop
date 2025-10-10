@@ -1,9 +1,21 @@
 "use client";
-export default function GlobalError({ error }: { error: Error }) {
+export default function Error({
+    error,
+    reset,
+}: {
+    error: Error;
+    reset: () => void;
+}) {
     return (
         <div>
-            <h1>Une erreur est survenue</h1>
+            <h2>Erreur serveur</h2>
             <pre>{error.message}</pre>
+            <button
+                className="hover:bg-gray-200 rounded py-2 px-4"
+                onClick={reset}
+            >
+                Réessayer
+            </button>
         </div>
     );
 }
