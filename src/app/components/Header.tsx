@@ -9,18 +9,10 @@ export default function Header() {
   return (
     <header className="site-header">
       <nav className="nav">
-        <Link className={t('/')} href="/">
-          Accueil
-        </Link>
-        <Link className={t('/products')} href="/products">
-          Produits
-        </Link>
-        <Link className={t('/blog')} href="/blog">
-          Blog
-        </Link>
-        <Link className={t('/about')} href="/about">
-          A propos
-        </Link>
+        <Link href="/">{t("home")}</Link>
+        <Link href="/products">{t("products")}</Link>
+        <Link href="/blog">{t("blog")}</Link>
+        <Link href="/about">{t("about")}</Link>
       </nav>
     </header>
   );

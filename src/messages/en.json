@@ -11,6 +11,9 @@
     "products": {
         "title": "Our Products"
     },
+    "blog": {
+        "title": "Blog"
+    },
     "about": {
         "title": "About"
     }

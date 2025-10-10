@@ -2,6 +2,7 @@
     "nav": {
         "home": "Accueil",
         "products": "Produits",
+        "blog": "Blog",
         "about": "À propos"
     },
     "home": {
@@ -10,6 +11,9 @@
     },
     "products": {
         "title": "Nos produits"
+    },
+    "blog": {
+        "title": "Blog"
     },
     "about": {
         "title": "À propos"
