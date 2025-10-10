@@ -13,7 +13,7 @@ export default getRequestConfig(async ({ locale }) => {
 		return { locale: loc, messages };
 	} catch {
 		// Fallback ultra-sûr en cas d'absence de fichier
-		const fallback = (await import('./messages/fr.json')).default;
+		const fallback = (await import('../messages/fr.json')).default;
 		return { locale: 'fr', messages: fallback };
 	}
 });
