@@ -1,23 +1,19 @@
 import { getRequestConfig } from "next-intl/server";
-import { hasLocale } from "next-intl";
-import { routing } from "./routing";
 
-export default getRequestConfig(async ({ requestLocale }) => {
-    const requested = await requestLocale;
-    const locale = hasLocale(routing.locales, requested)
-        ? requested
-        : routing.defaultLocale;
+export const SUPPORTED_LOCALES = ["fr", "en"] as const;
 
-    const [seoMessages] = await Promise.all([
-        import(`@/messages/${locale}.json`)
-            .then((module) => module.default)
-            .catch(() => ({})),
-    ]);
+export default getRequestConfig(async ({ locale }) => {
+    const loc =
+        typeof locale === "string" &&
+        SUPPORTED_LOCALES.includes(locale as "fr" | "en")
+            ? (locale as (typeof SUPPORTED_LOCALES)[number])
+            : "fr";
 
-    return {
-        locale,
-        messages: {
-            seo: seoMessages,
-        },
-    };
+    try {
+        const messages = (await import(`../messages/${loc}.json`)).default;
+        return { locale: loc, messages };
+    } catch {
+        const fallback = (await import("../messages/fr.json")).default;
+        return { locale: "fr", messages: fallback };
+    }
 });

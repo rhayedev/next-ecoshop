@@ -1,9 +1,19 @@
 {
+  "nav": {
     "home": "Home",
+    "products": "Products",
     "blogs": "Blogs",
-    "store": "Store",
     "bag": "Bag",
-    "storePage": {
-        "products" : "Products"
-    }
+    "about": "About"
+  },
+  "home": {
+    "title": "Welcome to Next Shop",
+    "description": "Next.js + TypeScript example: routing, SEO, layouts, errors, i18n."
+  },
+  "products": {
+    "products": "Products",
+    "get_your_headphones_now": "Get your headphones Now",
+    "add_to_bag": "Add to Bag",
+    "buy_now": "Buy Now"
+  }
 }

@@ -1,9 +1,19 @@
 {
-    "home": "Acceuil",
-    "blogs": "Blog",
-    "store": "magasin",
-    "bag": "Sac",
-    "storePage": {
-        "products" : "Produits"
+    "nav": {
+      "home": "Acceuil",
+      "products": "Produits",
+      "blogs": "Blogs",
+      "bag": "Sac",
+      "about": "À propos"
+    },
+    "home": {
+      "title": "Bienvenue sur Next Shop",
+      "description": "Next.js + TypeScript example: routing, SEO, layouts, errors, i18n."
+    },
+    "products": {
+      "products": "Produits",
+      "get_your_headphones_now": "Obtener votre casque Maintenant !",
+      "add_to_bag": "Ajouter au sac",
+      "buy_now": "Acheter"
     }
-}
+  }
