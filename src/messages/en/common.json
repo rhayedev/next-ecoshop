@@ -6,6 +6,16 @@
 		"blog": "Blog",
 		"news": "News"
 	},
+	"footer": {
+		"title": "Next Shop",
+		"description": "Your tech shop.",
+		"nav": {
+			"about": "About",
+			"products": "Products",
+			"blog": "Blog"
+		},
+		"copyright": "2025. All rights reserved"
+	},
 	"home": {
 		"title": "Welcome to Next Shop",
 		"description": "Next.js + TypeScript example: routing, SEO, layouts, errors, i18n."

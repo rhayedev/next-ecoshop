@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
-		const path = body.path; // ex: "/news/1"
+		const path = body.path; // ex: "/news/
 		await fetch(`http://localhost:3000${path}`, { method: 'GET', cache: 'no-store' });
 
 		return NextResponse.json({ revalidated: true });

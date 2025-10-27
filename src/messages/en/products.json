@@ -1,0 +1,8 @@
+{
+  "title": "Our Products",
+  "priceLabel": "Price",
+  "viewProduct": "View product",
+  "backButton": "← Back to products",
+  "notFoundTitle": "Product not found",
+  "notFoundDesc": "The requested product could not be found."
+}
