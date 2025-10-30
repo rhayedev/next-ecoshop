@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import "@/styles/globals.css";
+import "@/global.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 

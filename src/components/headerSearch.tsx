@@ -4,8 +4,8 @@ export default function HeaderSearch() {
     return (
         <div className="group flex-center relative min-w-10 min-h-10">
             <SearchLogo
-                className="rounded-full absolute left-0 p-2 w-10 h-10 text-black bg-white"
-                size={10}
+                className="rounded-full absolute left-0 p-3 w-10 h-10 text-black bg-white"
+                size={5}
             />
             <input
                 type="search"

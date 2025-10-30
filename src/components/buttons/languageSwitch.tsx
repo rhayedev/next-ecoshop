@@ -48,7 +48,9 @@ export default function LanguageSelector() {
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center cursor-pointer px-2 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-sm"
+                className={`flex items-center cursor-pointer px-2 py-2 rounded-md hover:bg-violet-800 trans-fast text-sm ${
+                    isOpen && "bg-violet-800"
+                }`}
                 aria-expanded={isOpen}
                 aria-haspopup="true"
             >
@@ -69,9 +71,9 @@ export default function LanguageSelector() {
                         <button
                             key={lang.code}
                             onClick={() => changeLanguage(lang.code)}
-                            className={`w-full text-left cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center ${
+                            className={`w-full text-left cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-violet-950 flex items-center rounded trans-fast ${
                                 lang.code === locale
-                                    ? "bg-gray-100 dark:bg-gray-800"
+                                    ? "bg-gray-100 dark:bg-violet-800"
                                     : ""
                             }`}
                         >

@@ -12,7 +12,6 @@ export default function Header() {
                 <HeaderLink href="/" title="home" />
                 <HeaderLink href="/blogs" title="blogs" />
                 <HeaderLink href="/products" title="products" />
-                <HeaderLink href="/bags" title="bag" />
                 <HeaderLink href="/news" title="news" />
                 <HeaderSearch />
             </nav>

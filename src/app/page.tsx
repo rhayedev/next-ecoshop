@@ -9,7 +9,6 @@ export default async function HomePage() {
                 {t("title")}
             </h1>
             <div className="bg-gradient-to-l from-violet-500 to-fuchsia-500 w-full rounded"></div>
-            <p>{t("description")}</p>
         </div>
     );
 }

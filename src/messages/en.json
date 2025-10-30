@@ -11,6 +11,12 @@
     "title": "Welcome to Next Shop",
     "description": "Next.js + TypeScript example: routing, SEO, layouts, errors, i18n."
   },
+  "article": {
+    "title": "Articles list"
+  },
+  "news": {
+    "title": "News"
+  },
   "products": {
     "products": "Products",
     "get_your_headphones_now": "Get your headphones Now",

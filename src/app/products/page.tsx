@@ -17,7 +17,7 @@ export default async function ProductsPage() {
             {products.map((p: any) => (
                 <li key={p.id}>
                     <Link href={`/products/${p.id}`}>
-                        <div className="w-72 bg-gray-100 rounded-2xl p-6 overflow-hidden aspect-[9:16] group flex flex-col gap-2 relative">
+                        <div className="w-72 bg-gray-100 hover:ring-[3px] trans-fast ring-violet-400 ring-offset-2 rounded-2xl p-6 overflow-hidden aspect-[9:16] group flex flex-col gap-2 relative">
                             <div className="flex justify-between text-gray-500">
                                 <p>{p.name}</p>
                                 <p className="text-xl text-black font-semibold">
@@ -34,10 +34,10 @@ export default async function ProductsPage() {
                             </div>
 
                             <div className="flex gap-2 relative z-10 flex-center">
-                                <button className="trans-fast hover:bg-violet-100 text-violet-500 rounded-2xl px-6 h-10 hover:cursor-pointer bg-violet-200">
+                                <button className="trans-fast hover:bg-violet-300 hover:text-violet-700 text-violet-500 rounded-2xl px-6 h-10 hover:cursor-pointer bg-violet-200">
                                     {t("add_to_bag")}
                                 </button>
-                                <button className="flex-center group h-10 hover:scale-105 w-10 rounded-2xl hover:cursor-pointer bg-white border-violet-100 border p-2 hover:text-red-600 text-red-400 trans-fast">
+                                <button className="flex-center h-10 w-10 rounded-2xl hover:cursor-pointer bg-white border-red-100 border p-2 hover:bg-red-400 hover:text-red-100 text-red-400 trans-fast">
                                     <HearthLogo />
                                 </button>
                             </div>
