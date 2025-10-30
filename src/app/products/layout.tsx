@@ -1,10 +1,11 @@
+import Filters from "@/components/Filters";
 import { useTranslations } from "next-intl";
+import ProductsList from "./ProductList";
+import QueryProvider from "../providers/QueryProvider";
+import AddToCartButton from "./AddToCartButton";
+import CartSummary from "@/components/CartSummary";
 
-export default function ProductsLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+export default function ProductsLayout() {
     const t = useTranslations("products");
 
     return (
@@ -31,7 +32,10 @@ export default function ProductsLayout({
                     className="h-80"
                 />
             </div>
-            {children}
+            <Filters />
+            <QueryProvider>
+                <ProductsList/>
+            </QueryProvider>
         </section>
     );
 }
