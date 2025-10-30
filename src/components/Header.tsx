@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import PreferencesControls from "@/app/components/PreferencesControls";
 
 type Messages = {
   nav: {
@@ -23,6 +25,8 @@ export default function Header({
     { href: "/products", label: messages.nav.products },
     { href: "/about", label: messages.nav.about ?? "" },
   ];
+  const [showPrefs, setShowPrefs] = useState(false);
+
   return (
     <header className="site-header home-header">
       <div className="header-inner">
@@ -47,6 +51,39 @@ export default function Header({
               )
           )}
         </nav>
+        <div style={{ marginLeft: 24, position: "relative" }}>
+          <button
+            aria-label="Préférences"
+            style={{
+              background: "none",
+              border: "none",
+              fontSize: 24,
+              cursor: "pointer",
+              padding: 4,
+            }}
+            onClick={() => setShowPrefs((v) => !v)}
+          >
+            ⚙️
+          </button>
+          {showPrefs && (
+            <div
+              style={{
+                position: "absolute",
+                top: "120%",
+                right: 0,
+                zIndex: 1000,
+                background: "#fff",
+                border: "1px solid #eee",
+                borderRadius: 8,
+                boxShadow: "0 2px 12px #0002",
+                padding: 16,
+                minWidth: 220,
+              }}
+            >
+              <PreferencesControls />
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

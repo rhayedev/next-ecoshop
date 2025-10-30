@@ -11,7 +11,6 @@ body {
 }
 
 #app-root, .app-root, .next-app, .next-root {
-  /* Pour compatibilité, si tu utilises un conteneur principal */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -29,7 +28,9 @@ body {
 * { box-sizing: border-box; }
 body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 .container { max-width: 960px; margin: 0 auto; padding: var(--gap); }
-.site-header { padding: var(--pad); border-bottom: 1px solid var(--border); }
+.site-header {   background: var(--header-bg, #e0eafc);
+  color: var(--foreground, #222);
+}
 .nav { display:flex; gap: var(--gap); }
 .site-footer { margin-top:24px; padding: var(--pad); border-top:1px solid var(--border); }
 .active { text-decoration: underline; }
@@ -342,13 +343,25 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
   gap: 1.2rem;
 }
 
+.products-list.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 320px));
+  justify-content: start;
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+}
+
 .product-card {
-  background: #fff;
-  border-radius: 0.9rem;
-  box-shadow: 0 2px 8px rgba(52, 112, 173, 0.07);
-  transition: box-shadow 0.18s, transform 0.18s;
-  overflow: hidden;
-  display: block;
+  background: var(--card-bg, #fff);
+  color: var(--foreground, #222);
+  border: 1px solid var(--card-border, #eee);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .product-link {
@@ -575,4 +588,59 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
   .blog-title {
     font-size: 1.5rem;
   }
+}
+
+aside {
+  background: var(--aside-bg, #f8fafc);
+  color: var(--foreground, #222);
+  border: 1px solid var(--card-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  min-width: 260px;
+  max-width: 320px;
+  box-shadow: 0 2px 8px #0001;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+aside h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+aside button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3em 0.8em;
+  margin-left: 0.5em;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background 0.2s;
+}
+aside button:hover {
+  background: #1e40af;
+}
+
+body.theme-light {
+  background: #f8fafc;
+  color: #222;
+}
+
+body.theme-dark {
+  --background: #18181b;
+  --foreground: #ededed;
+  --card-bg: #23232b;
+  --card-border: #333;
+  --aside-bg: #23232b;
+  --input-bg: #23232b;
+  --input-border: #444;
+  --header-bg: #1a1a1e;
+  --shadow: 0 2px 12px #0008;
+  background: var(--background);
+  color: var(--foreground);
 }
