@@ -1,6 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default function ProductDetailClient({ product }: { product: any }) {
   const t = useTranslations('products');
@@ -20,6 +21,7 @@ export default function ProductDetailClient({ product }: { product: any }) {
       <p className="text-gray-700 text-lg mb-6">
         {t('priceLabel')} : <span className="font-semibold">{product.price} €</span>
       </p>
+      <AddToCartButton product={product} />
       <Link
         href="/products"
         className="inline-block px-5 py-2 bg-gray-200 text-gray-800 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors"

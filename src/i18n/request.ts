@@ -11,7 +11,7 @@ export default getRequestConfig(async ({ locale }) => {
       : 'fr';
 
   try {
-    const localeDir = path.join(process.cwd(),'src', 'messages', loc);
+    const localeDir = path.join(process.cwd(), 'src', 'messages', loc);
     const files = fs.readdirSync(localeDir).filter((f) => f.endsWith('.json'));
 
     const messages = files.reduce((acc, file) => {
@@ -22,7 +22,7 @@ export default getRequestConfig(async ({ locale }) => {
 
     return { locale: loc, messages };
   } catch (e) {
-    const fallbackPath = path.join(process.cwd(),'src', 'messages', 'fr', 'common.json');
+    const fallbackPath = path.join(process.cwd(), 'src', 'messages', 'fr', 'common.json');
     const fallback = JSON.parse(fs.readFileSync(fallbackPath, 'utf-8'));
     return { locale: 'fr', messages: fallback };
   }

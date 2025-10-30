@@ -1,4 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
+import ClientProvider from "@/providers/reduxProvider";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import '@/styles/globals.css';
@@ -12,7 +13,7 @@ export default async function LocaleRootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const { locale } = params;
+  const { locale } = await params;
   const localeDir = path.join(process.cwd(), 'src', 'messages', locale);
 
   let messages = {};
@@ -41,17 +42,22 @@ export default async function LocaleRootLayout({
   }
 
   return (
+    
     <html lang={locale}>
+      <ClientProvider>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
-          <main className="flex-1 container mx-auto px-6 py-12">{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
+        
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Header />
+            <main className="flex-1 container mx-auto px-6 py-12">{children}</main>
+            <Footer />
+          </NextIntlClientProvider>
+
       </body>
+      </ClientProvider>
     </html>
   );
 }

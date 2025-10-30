@@ -17,6 +17,7 @@ export default function Header() {
           <Link href={`/${locale}/products`}>{t('products')}</Link>
           <Link href={`/${locale}/about`}>{t('about')}</Link>
           <Link href={`/${locale}/blog`}>{t('blog')}</Link>
+          <Link href={`/${locale}/cart`}>{t('cart')}</Link>
         </nav>
       </div>
     </header>
