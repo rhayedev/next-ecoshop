@@ -60,14 +60,14 @@ export default function CartSummary() {
                             <div className="flex justify-between">
                                 <div className="flex gap-4 items-center">
                                     <button onClick={() => increment(i)}>
-                                        <PlusLogo
+                                        <MinusLogo
                                             size={34}
                                             className="p-2 rounded-md bg-violet-100/10 text-violet-500"
                                         />
                                     </button>
                                     <p>{i.qty}</p>
                                     <button onClick={() => decrement(i)}>
-                                        <MinusLogo
+                                        <PlusLogo
                                             size={34}
                                             className="p-2 rounded-md bg-violet-100/10 text-violet-500"
                                         />

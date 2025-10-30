@@ -43,6 +43,7 @@ export default function ProductsList() {
     return (
         <div>
             <ul className="flex-wrap flex justify-center gap-5 min-h-80">
+                {data.items[0] == null && <p>{t("no_products_found")}</p>}
                 {data.items.map((p: any) => (
                     <li key={p.id}>
                         <Link href={`/products/${p.id}`}>

@@ -19,12 +19,12 @@ export default function Filters() {
     }
 
     return (
-        <div className='relative mb-2'>
+        <div className='relative mb-10'>
             <input
                 defaultValue={q}
                 onChange={(e) => updateParam(e.target.value)}
                 placeholder="Recherche…"
-                className="p-2 border rounded w-full"
+                className="outline-none w-full bg-violet-100 pl-4 py-2 rounded-xl h-12"
             />
             {isPending && <p className='text-gray-500 absolute top-full translate-y-2'>Mise à jour…</p>}
         </div>
