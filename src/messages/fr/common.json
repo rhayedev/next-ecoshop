@@ -21,5 +21,6 @@
 		"description": "Exemple Next.js + TypeScript : routing, SEO, layouts, erreurs, i18n."
 	},
 	"products": { "title": "Nos produits" },
-	"about": { "title": "À propos" }
+	"about": { "title": "À propos" },
+    "cart" : "Panier"
 }
