@@ -5,6 +5,7 @@ import "@/global.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
+import { reportWebVitals } from '@/app/client/reportWebVitals';
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    if (typeof window !== 'undefined') reportWebVitals();
     return (
         <html lang="en">
             <head>

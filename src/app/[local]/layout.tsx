@@ -19,8 +19,8 @@ const messagesMap: Record<string, Messages> = {
     fr: frMessages,
   };
 
-export default function LocaleLayout({ children, params: { local } }: Props) {
-    const messages = messagesMap[local];
+export default async function LocaleLayout({ children, params: { local } }: Props) {
+    const messages = await messagesMap[local];
     if (!messages) notFound();
 
     return (
