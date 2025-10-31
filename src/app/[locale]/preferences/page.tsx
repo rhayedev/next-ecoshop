@@ -1,3 +1,5 @@
+"use client"; // <--- indispensable pour Redux hooks
+
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "@/store/store";
 import { setCurrency, setTheme, setPageSize } from "@/store/preferencesSlice";

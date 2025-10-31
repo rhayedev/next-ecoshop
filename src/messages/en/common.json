@@ -4,7 +4,8 @@
 		"products": "Products",
 		"about": "About",
 		"blog": "Blog",
-		"news": "News"
+		"news": "News",
+		"cart": "Cart"
 	},
 	"footer": {
 		"title": "Next Shop",
