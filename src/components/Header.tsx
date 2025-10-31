@@ -12,19 +12,26 @@ type Messages = {
   };
 };
 
+type HeaderProps = {
+  locale?: string;
+  messages?: Messages; // <-- optionnel
+};
+
 export default function Header({
   locale = "fr",
   messages,
-}: {
-  locale?: string;
-  messages: Messages;
-}) {
+}: HeaderProps) {
   const pathname = usePathname() || "/";
-  const navLinks = [
-    { href: "/", label: messages.nav.home },
-    { href: "/products", label: messages.nav.products },
-    { href: "/about", label: messages.nav.about ?? "" },
-  ];
+
+  // Si pas de messages, on affiche une navigation minimale
+  const navLinks = messages
+    ? [
+        { href: "/", label: messages.nav.home },
+        { href: "/products", label: messages.nav.products },
+        { href: "/about", label: messages.nav.about ?? "" },
+      ]
+    : [];
+
   const [showPrefs, setShowPrefs] = useState(false);
 
   return (

@@ -2,7 +2,7 @@ import messagesFr from "@/messages/fr.json";
 import messagesEn from "@/messages/en.json";
 import Link from "next/link";
 
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
 function getMessages(locale: string) {
   switch (locale) {
@@ -15,7 +15,7 @@ function getMessages(locale: string) {
 }
 
 export default async function LocaleHomePage(props: Props) {
-  const { params } = await props;
+  const params = await props.params;
   const messages = getMessages(params.locale);
 
   return (

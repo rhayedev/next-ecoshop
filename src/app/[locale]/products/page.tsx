@@ -1,18 +1,22 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useCart } from "../../stores/Cart";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../stores/stores";
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { Products } from "@/lib/products";
 import messagesFr from "@/messages/fr.json";
 import messagesEn from "@/messages/en.json";
 import CategoriesList from '../../components/CategoriesList';
+import React from "react";
+// --- Version optimisée : tri natif JS ---
+// import sortBy from "lodash/sortBy"; // A décommenter pour la version lodash ciblée)
 
-type Props = { params: { locale: string } };
+type Props = { params: Promise<{ locale: string }> };
 
 function getMessages(locale: string) {
   switch (locale) {
@@ -41,8 +45,9 @@ function fetchProducts({ page, q }: { page: number; q: string }) {
 }
 
 export default function ProductsPage(props: Props) {
-  const { params } = props;
-  const messages = getMessages(params.locale);
+  const params = use(props.params);
+  const { locale } = params;
+  const messages = getMessages(locale);
   const add = useCart(s => s.add);
   const currency = useSelector((state: RootState) => state.preferences.currency);
 
@@ -52,8 +57,8 @@ export default function ProductsPage(props: Props) {
   const pathname = usePathname();
 
   // Valeurs initiales depuis l’URL
-const qParam = searchParams?.get('q') ?? '';
-const pageParam = parseInt(searchParams?.get('page') ?? '1', 10);
+  const qParam = searchParams?.get('q') ?? '';
+  const pageParam = parseInt(searchParams?.get('page') ?? '1', 10);
 
   // Etats contrôlés
   const [q, setQ] = useState(qParam);
@@ -79,6 +84,11 @@ const pageParam = parseInt(searchParams?.get('page') ?? '1', 10);
     queryFn: () => fetchProducts({ page, q }),
   });
 
+  // --- Tri optimisé (natif JS) ---
+  const sortedProducts = [...products].sort((a, b) => a.name.localeCompare(b.name));
+  // --- Ou, version lodash ciblée ---
+  // const sortedProducts = sortBy(products, "name");
+  
   const queryClient = useQueryClient();
   const addToCartMutation = useMutation({
     mutationFn: async (product: { id: string; name: string; price: number }) => {
@@ -100,24 +110,42 @@ const pageParam = parseInt(searchParams?.get('page') ?? '1', 10);
       {/* Colonne produits */}
       <section style={{ flex: 1 }}>
         <h1 className="products-title">{messages.products.title}</h1>
-        <input
-          placeholder="Recherche"
-          value={q}
-          onChange={e => {
-            setQ(e.target.value);
-            updateUrl(e.target.value, 1); // reset page à 1 sur recherche
-          }}
-          style={{ marginBottom: 16 }}
-        />
+        <form
+          role="search"
+          aria-label={locale === "fr" ? "Recherche de produits" : "Product search"}
+          style={{ marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}
+          onSubmit={e => e.preventDefault()}
+        >
+          <label htmlFor="search-products" style={{ fontWeight: "bold" }}>
+            {locale === "fr" ? "Recherche" : "Search"}
+          </label>
+          <input
+            id="search-products"
+            placeholder={locale === "fr" ? "Recherche" : "Search"}
+            value={q}
+            onChange={e => {
+              setQ(e.target.value);
+              updateUrl(e.target.value, 1); // reset page à 1 sur recherche
+            }}
+            style={{ flex: 1 }}
+          />
+        </form>
         {isLoading ? (
           <p>Chargement...</p>
         ) : (
           <ul className="products-list grid">
-            {products.map(p => (
+            {sortedProducts.map(p => (
               <li key={p.id} className="product-card">
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <Link href={`/${params.locale}/products/${p.id}`} className="product-link">
-                    <img src={p.image} alt={p.name} className="product-img" />
+                  <Link href={`/${locale}/products/${p.id}`} className="product-link">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      className="product-img"
+                      width={400}
+                      height={300}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                     <div className="product-info">
                       <span className="product-name">{p.name}</span>
                       <span className="product-price">{formatPrice(p.price, currency)}</span>
@@ -127,8 +155,9 @@ const pageParam = parseInt(searchParams?.get('page') ?? '1', 10);
                   <button
                     onClick={() => addToCartMutation.mutate({ id: p.id, name: p.name, price: p.price })}
                     className="product-add"
+                    aria-label={`Ajouter ${p.name} au panier`}
                   >
-                    {params.locale === "fr" ? "Ajouter au panier" : "Add to cart"}
+                    {locale === "fr" ? "Ajouter au panier" : "Add to cart"}
                   </button>
                 </div>
               </li>
