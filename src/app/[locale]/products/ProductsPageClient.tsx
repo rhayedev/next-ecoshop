@@ -2,15 +2,17 @@
 
 import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { useProducts } from '@/hooks/useProducts';
 import { useAddToCart } from '@/hooks/useAddToCart';
 import Link from 'next/link';
 
 export default function ProductsPageClient() {
   const t = useTranslations('products');
+  const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const locale = params.locale;
 
   const initialPage = Number(searchParams.get('page') ?? 1);
   const initialQ = searchParams.get('q') ?? '';
@@ -22,27 +24,38 @@ export default function ProductsPageClient() {
   const addToCart = useAddToCart();
 
   useEffect(() => {
-    const params = new URLSearchParams();
-    if (q) params.set('q', q);
-    if (page > 1) params.set('page', page.toString());
-    router.replace(`/products?${params.toString()}`);
-  }, [q, page, router]);
+    const paramsSearch = new URLSearchParams();
+    if (q) paramsSearch.set('q', q);
+    if (page > 1) paramsSearch.set('page', page.toString());
+  
+    router.replace(`/${params.locale}/products?${paramsSearch.toString()}`);
+  }, [q, page, router, params.locale]);
+  
 
   if (isLoading) return <div>Chargement...</div>;
   if (isError) return <div>Erreur lors du chargement</div>;
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-12">
-      <input
-        type="text"
-        placeholder={t('searchPlaceholder')}
-        value={q}
-        onChange={(e) => {
-          setQ(e.target.value);
-          setPage(1);
-        }}
-        className="border rounded px-3 py-2 mb-6 w-full"
-      />
+      <h1 className="text-4xl font-bold mb-6">Produits</h1>
+
+      <div className="mb-6">
+        <label htmlFor="search" className="sr-only">
+          Rechercher un produit
+        </label>
+        <input
+          id="search"
+          type="text"
+          placeholder={t('searchPlaceholder')}
+          value={q}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setPage(1);
+          }}
+          className="border rounded px-3 py-2 w-full"
+        />
+      </div>
+
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {products?.map((p) => (
           <li
@@ -51,7 +64,7 @@ export default function ProductsPageClient() {
           >
             <div className="p-8 flex flex-col justify-between h-full">
               <Link href={`/products/${p.id}`} className="block mb-4">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-3">{p.name}</h3>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-3">{p.name}</h2>
                 <p className="text-gray-600 mb-6 text-lg">
                   {t('priceLabel')} : <span className="font-semibold">{p.price} €</span>
                 </p>
@@ -60,8 +73,9 @@ export default function ProductsPageClient() {
                 </span>
               </Link>
               <button
+                aria-label={`Ajouter ${p.name} au panier`}
                 onClick={() => addToCart.mutate(p)}
-                className="mt-auto bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+                className="mt-auto bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
               >
                 {t('addToCart')}
               </button>
@@ -69,6 +83,7 @@ export default function ProductsPageClient() {
           </li>
         ))}
       </ul>
+
       <div className="mt-8 flex justify-between items-center">
         <button
           onClick={() => setPage((old) => Math.max(old - 1, 1))}
