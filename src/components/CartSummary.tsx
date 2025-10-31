@@ -14,9 +14,11 @@ export default function CartSummary() {
 
     if (items.length === 0)
         return (
-            <p className="bg-gray-50 border p-4 rounded-lg text-black">
+            <div className="p-4 rounded-xl bg-[#0c0c0c] shadow-md w-full ring-offset-white text-white">
+                <p className="bg-violet-100/20 p-4 rounded-lg">
                 Votre sac est vide
             </p>
+            </div>
         );
 
     function increment(item: CartItem) {
@@ -36,7 +38,7 @@ export default function CartSummary() {
     }
 
     return (
-        <div className="p-4 rounded-xl bg-[#0c0c0c] w-full ring-offset-white text-white">
+        <div className="p-4 rounded-xl bg-[#0c0c0c] shadow-md w-full ring-offset-white text-white">
             <div className="justify-between flex relative">
                 <h2 className="font-semibold w-full flex-center mb-4">My bag</h2>
             </div>
