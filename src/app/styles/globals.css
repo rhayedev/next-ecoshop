@@ -70,6 +70,23 @@ h1, h2, h3, h4 {
   background: #3730a3;
 }
 
+.btn-primary {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(36,91,146,0.25);
+}
+
 .active {
 	text-decoration: underline;
 }

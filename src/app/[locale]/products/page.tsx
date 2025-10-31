@@ -21,22 +21,30 @@ export default function ProductsPage() {
   if (error) return <p>Erreur : {(error as Error).message}</p>;
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="col-span-2">
-        <ul className="product-list">
+    <main className="grid grid-cols-3 gap-4" aria-labelledby="products-title">
+      {/* H1 : unique sur la page */}
+      <h1 id="products-title" className="col-span-3 text-2xl font-bold mb-4 sr-only:not-sr-only">
+        Nos produits
+      </h1>
+
+      <section className="col-span-2" aria-labelledby="products-title">
+        <ul className="product-list" aria-live="polite">
           {data.map((p: any) => (
-            <li key={p.id} className="product-card">
-              <Link href={`/products/${p.id}`}>{p.name}</Link>
+            <li key={p.id} className="product-card" role="article">
+              <h2 className="text-lg font-semibold">
+                <Link href={`/products/${p.id}`}>{p.name}</Link>
+              </h2>
               <p>{p.price} €</p>
             </li>
           ))}
         </ul>
-      </div>
-      <div>
+      </section>
+
+      <aside className="col-span-1" aria-label="Panier et catégories">
         <CartSummary />
         <hr className="my-4" />
         <Categories />
-      </div>
-    </div>
+      </aside>
+    </main>
   );
 }
