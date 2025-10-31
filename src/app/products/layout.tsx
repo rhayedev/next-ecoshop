@@ -2,6 +2,8 @@ import Filters from "@/components/Filters";
 import { useTranslations } from "next-intl";
 import ProductsList from "./ProductList";
 import QueryProvider from "../providers/QueryProvider";
+import Image from "next/image";
+import HeadphoneHero from "@/components/imgs/headphone-hero.webp";
 
 export default function ProductsLayout() {
     const t = useTranslations("products");
@@ -24,10 +26,13 @@ export default function ProductsLayout() {
                     </button>
                 </div>
 
-                <img
-                    src="https://www.hear-her.com/wp-content/uploads/2018/01/her-onears-5.png"
+                <Image
                     alt=""
-                    className="h-80"
+                    src={HeadphoneHero}
+                    className=""
+                    width={320}
+                    height={320}
+                    priority={false}
                 />
             </div>
             <Filters />
