@@ -1,9 +1,24 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
-const config = {};
+const config = {
+  experimental: {},
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 7,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+        pathname: '/**',
+      },
+    ],
+  },
+};
 
-export default withNextIntl(config);
- 
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})(config);

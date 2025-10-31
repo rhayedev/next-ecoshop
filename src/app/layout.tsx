@@ -20,7 +20,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <QueryProvider>
             {children}
             {/* Enregistrement du Service Worker */}
-            {/* @ts-expect-error Server/Client mix */}
             <RegisterSW />
           </QueryProvider>
         </Providers>

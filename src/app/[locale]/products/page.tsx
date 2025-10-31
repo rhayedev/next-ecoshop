@@ -22,7 +22,6 @@ export default function ProductsPage() {
 
   return (
     <main className="grid grid-cols-3 gap-4" aria-labelledby="products-title">
-      {/* H1 : unique sur la page */}
       <h1 id="products-title" className="col-span-3 text-2xl font-bold mb-4 sr-only:not-sr-only">
         Nos produits
       </h1>

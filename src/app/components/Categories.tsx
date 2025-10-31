@@ -9,7 +9,7 @@ const fetcher = (url: string) =>
 
 export default function Categories() {
   const { data, error, isLoading } = useSWR('/api/categories', fetcher, {
-    refreshInterval: 0, // pas de refetch automatique
+    refreshInterval: 0,
   });
 
   if (isLoading) return <p>Chargement des catégories...</p>;

@@ -16,7 +16,6 @@ export function Page() {
   return (
     <main className="flex flex-col items-center mt-10">
       <h1 className="text-2xl font-bold mb-6">Page d’accueil 🌍</h1>
-      {/* @ts-expect-error Client Component */}
       <PreferencesPanel />
     </main>
   );
