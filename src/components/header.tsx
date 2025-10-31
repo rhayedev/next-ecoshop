@@ -4,11 +4,14 @@ import LanguageSwitcher from "./buttons/languageSwitch";
 import HeaderLink from "./headerLink";
 import HeaderSearch from "./headerSearch";
 import HeaderBag from "./headerBag";
+import MenuLogo from "./icon/menuLogo";
 
 export default function Header() {
     return (
         <header className="site-header sticky top-0 z-50 bg-[#0c0c0c] w-full flex-center flex-col h-20">
-            <nav className="nav w-fit items-center relative z-50 flex gap-5 text-gray-200 h-full">
+
+            <nav className="nav sm:w-fit justify-between sm:justify-center w-full items-center relative z-50 flex gap-5 text-gray-200 h-full">
+                <MenuLogo className="block sm:hidden" size={34} />
                 <LanguageSwitcher />
                 <HeaderLink href="/" title="home" />
                 <HeaderLink href="/blogs" title="blogs" />

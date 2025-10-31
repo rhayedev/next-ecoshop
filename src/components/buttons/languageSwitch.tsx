@@ -45,7 +45,7 @@ export default function LanguageSelector() {
     };
 
     return (
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative hidden sm:block" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`flex items-center cursor-pointer px-2 py-2 rounded-md hover:bg-violet-800 trans-fast text-sm ${

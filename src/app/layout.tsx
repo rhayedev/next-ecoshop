@@ -40,9 +40,9 @@ export default function RootLayout({
             >
                 <NextIntlClientProvider>
                     <Header />
-                    <div className="bg-[#fffcfc] py-5 px-40 h-full rounded-xl">
+                    <main className="bg-[#fffcfc] py-5 px-5 sm:px-40 h-full rounded-xl">
                         {children}
-                    </div>
+                    </main>
                     <Footer />
                 </NextIntlClientProvider>
             </body>
