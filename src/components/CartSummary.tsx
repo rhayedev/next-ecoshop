@@ -1,9 +1,10 @@
 'use client';
 import { useCart, CartState, CartItem } from '@/app/stores/useCart';
-import CrossLogo from './icon/crossLogo';
 import PlusLogo from './icon/plusLogo';
 import MinusLogo from './icon/minusLogo';
+import Image from 'next/image';
 import TrashLogo from './icon/trashLogo';
+import Headphone from '@/components/imgs/headphone.png';
 
 export default function CartSummary() {
     const items = useCart((s: CartState) => s.items);
@@ -14,11 +15,9 @@ export default function CartSummary() {
 
     if (items.length === 0)
         return (
-            <div className="p-4 rounded-xl bg-[#0c0c0c] shadow-md w-full ring-offset-white text-white">
-                <p className="bg-violet-100/20 p-4 rounded-lg">
+            <p className=" p-4 w-full text-center">
                 Votre sac est vide
             </p>
-            </div>
         );
 
     function increment(item: CartItem) {
@@ -38,7 +37,7 @@ export default function CartSummary() {
     }
 
     return (
-        <div className="p-4 rounded-xl bg-[#0c0c0c] shadow-md w-full ring-offset-white text-white">
+        <div className="w-full text-white">
             <div className="justify-between flex relative">
                 <h2 className="font-semibold w-full flex-center mb-4">My bag</h2>
             </div>
@@ -50,8 +49,10 @@ export default function CartSummary() {
                         key={i.id}
                     >
                         <div className="h-24 p-5 aspect-square rounded-xl bg-gray-100">
-                            <img
-                                src="https://cdn.cultura.com/cdn-cgi/image/width=830/media/pim/6925281988219.png"
+                            <Image
+                                width={56}
+                                height={64}
+                                src={Headphone}
                                 alt=""
                                 className="grayscale-100 group-hover:grayscale-0 rounded-b-xl cursor-pointer trans-fast rounded-t-[4px]"
                             />

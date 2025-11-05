@@ -6,6 +6,9 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import HearthLogo from "@/components/icon/heartLogo";
 import ChevronDown from '@/components/icon/chevronDown';
 import AddToCartButton from './AddToCartButton';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Headphone from '@/components/imgs/headphone.png';
 
 async function fetchProducts(page: number, q: string | null) {
     const res = await fetch(`/api/products?page=${page}${q ? `&q=${encodeURIComponent(q)}` : ''}`);
@@ -40,8 +43,13 @@ export default function ProductsList() {
     const perPage = 5;
     const totalPages = Math.ceil(total / perPage);
 
+    const ProductCharts = dynamic(() => import('@/app/products/ProductCharts'), {
+        loading: () => <p>Chargement du module…</p>,
+    });
+
     return (
         <div>
+            <ProductCharts />
             <ul className="flex-wrap flex justify-center gap-5 min-h-80">
                 {data.items[0] == null && <p className='text-gray-500 text-xl mt-5'>{t("no_products_found")}</p>}
                 {data.items.map((p: any) => (
@@ -56,8 +64,10 @@ export default function ProductsList() {
                                 </div>
 
                                 <div className="overflow-hidden p-10 rounded-xl bg-gray-100">
-                                    <img
-                                        src="https://cdn.cultura.com/cdn-cgi/image/width=830/media/pim/6925281988219.png"
+                                    <Image
+                                        width={160}
+                                        height={184}
+                                        src={Headphone}
                                         alt=""
                                         className="grayscale-100 group-hover:grayscale-0 rounded-b-xl cursor-pointer trans-fast rounded-t-[4px]"
                                     />
