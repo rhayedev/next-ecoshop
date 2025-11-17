@@ -4,9 +4,9 @@ import QueryProvider from './stores/QueryProvider';
 import RegisterSW from './components/RegisterSW';
 import { ReactNode } from 'react';
 
-if (process.env.NODE_ENV !== 'production') {
-  import('../axe');
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   import('../axe');
+// }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
