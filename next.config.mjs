@@ -3,9 +3,10 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 const isAnalyze = process.env.ANALYZE === 'true';
 
 const config = {
-  // Désactive Turbopack si on analyse le bundle
-  ...(isAnalyze && { experimental: { turbo: false } }),
-
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 7,
+  },
 };
 
 export default withBundleAnalyzer({

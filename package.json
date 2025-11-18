@@ -2,9 +2,10 @@
   "name": "ecoshop-next",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "build:analyze": "cross-env ANALYZE=true npm run build"
@@ -32,8 +33,10 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "^19",
     "cross-env": "^10.1.0",
+    "ecoindex": "^2.0.1",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "puppeteer": "^24.27.0",
     "tailwindcss": "^4",
     "typescript": "5.9.3"
   }
