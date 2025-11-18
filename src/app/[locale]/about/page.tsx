@@ -1,5 +1,5 @@
 export const metadata = {
-	title: 'Next Shop — About',
+	title: 'EcoShop — About',
 	description: 'A propos de nous',
 };
 

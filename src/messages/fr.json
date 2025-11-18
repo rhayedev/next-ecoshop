@@ -6,8 +6,8 @@
         "about": "À propos"
     },
     "home": {
-        "title": "Bienvenue sur Next Shop",
-        "description": "Exemple Next.js + TypeScript : routing, SEO, layouts, erreurs, i18n."
+        "title": "Bienvenue sur EcoShop",
+        "description": "Site de test pour acheter les produits qu'on possède :)"
     },
     "products": {
         "title": "Nos produits"

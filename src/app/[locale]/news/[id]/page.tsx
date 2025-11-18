@@ -5,7 +5,7 @@ export const revalidate = 30;
 
 export default async function NewsPage({ params }: { params: { id: string } }) {
   const res = await fetch(
-    `https://api.example.com/news/${params.id}`,
+    `https://alliancedesproprietaires.fr:8443/api/faqs/${params.id}`,
     {
       next: { tags: ['news', `news:${params.id}`] },
     }
