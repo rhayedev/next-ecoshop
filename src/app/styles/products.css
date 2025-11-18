@@ -1,0 +1,32 @@
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gap);
+  padding: var(--gap) 0;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.product-card a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.product-card p {
+  color: var(--color-muted);
+}

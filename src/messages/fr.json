@@ -1,0 +1,21 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "products": "Produits",
+        "blog": "Blog",
+        "about": "À propos"
+    },
+    "home": {
+        "title": "Bienvenue sur EcoShop",
+        "description": "Site de test pour acheter les produits qu'on possède :)"
+    },
+    "products": {
+        "title": "Nos produits"
+    },
+    "blog": {
+        "title": "Blog"
+    },
+    "about": {
+        "title": "À propos"
+    }
+}
