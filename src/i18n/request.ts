@@ -2,6 +2,12 @@ import { getRequestConfig } from 'next-intl/server';
 
 export const SUPPORTED_LOCALES = ['fr', 'en'] as const;
 
+export type Locale = (typeof SUPPORTED_LOCALES)[number];
+
+export function isLocale(value: string): value is Locale {
+  return SUPPORTED_LOCALES.includes(value as Locale);
+}
+
 export default getRequestConfig(async ({ locale }) => {
     const loc =
         typeof locale === 'string' && SUPPORTED_LOCALES.includes(locale as 'fr' | 'en')
