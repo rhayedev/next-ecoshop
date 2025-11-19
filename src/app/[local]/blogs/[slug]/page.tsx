@@ -10,9 +10,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     if (!post) return <h1>Article introuvable</h1>;
 
     return (
-        <article className="prose mx-auto py-10">
+        <article className="py-10">
             <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </article>
     );
 }

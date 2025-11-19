@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import FetchProducts from "@/lib/ssrFetch";
 import dynamic from 'next/dynamic';
 import Image from "next/image";
+import { Product } from "@/lib/products";
 
 export const metadata = {
     title: "Next Shop — Produits",
@@ -22,7 +23,7 @@ export default async function ProductsPage() {
     return (
         <ul className="flex-wrap flex justify-center gap-5">
             <ProductCharts />
-            {products.map((p: any) => (
+            {products.map((p: Product) => (
                 <li key={p.id}>
                     <Link href={`/products/${p.id}`}>
                         <div className="w-72 bg-gray-100 hover:ring-[3px] trans-fast ring-violet-400 ring-offset-2 rounded-2xl p-6 overflow-hidden aspect-[9:16] group flex flex-col gap-2 relative">

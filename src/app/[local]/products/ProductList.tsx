@@ -9,6 +9,7 @@ import AddToCartButton from './AddToCartButton';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Headphone from '@/components/imgs/headphone.png';
+import { Product } from '@/lib/products';
 
 async function fetchProducts(page: number, q: string | null) {
     const res = await fetch(`/api/products?page=${page}${q ? `&q=${encodeURIComponent(q)}` : ''}`);
@@ -52,7 +53,7 @@ export default function ProductsList() {
             <ProductCharts />
             <ul className="flex-wrap flex justify-center gap-5 min-h-80">
                 {data.items[0] == null && <p className='text-gray-500 text-xl mt-5'>{t("no_products_found")}</p>}
-                {data.items.map((p: any) => (
+                {data.items.map((p: Product) => (
                     <li key={p.id}>
                         <Link href={`/products/${p.id}`}>
                             <div className="w-72 bg-gray-100 hover:ring-[3px] trans-fast ring-violet-400 ring-offset-2 rounded-2xl p-6 overflow-hidden aspect-[9:16] group flex flex-col gap-2 relative">

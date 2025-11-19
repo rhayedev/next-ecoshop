@@ -1,9 +1,10 @@
+import { Product } from "@/lib/products";
 import FetchProducts from "@/lib/ssrFetch";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
     const products = await FetchProducts();
-    return products.map((p: any) => ({
+    return products.map((p: Product) => ({
         id: p.id.toString(),
     }));
 }

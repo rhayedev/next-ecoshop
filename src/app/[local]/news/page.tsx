@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FetchNews from "@/lib/isrFetch";
+import { Article } from "@/types/types";
 
 export const revalidate = 60;
 
@@ -8,7 +9,7 @@ export default async function NewsListPage() {
 
     return (
         <ul className="space-y-4">
-            {news.map((article: any) => (
+            {news.map((article: Article) => (
                 <li key={article.id} className="border-b pb-2">
                     <Link
                         href={`/news/${article.id}`}

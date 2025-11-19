@@ -36,6 +36,7 @@ export default function RootLayout({
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192.png" />
+                <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} p-5 bg-[#0c0c0c] max-w-screen overflow-x-hidden min-h-screen text-black antialiased`}
