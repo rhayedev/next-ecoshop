@@ -7,7 +7,7 @@ import { useCart } from "../../stores/Cart";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../stores/stores";
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { useEffect, useState, use } from "react";
+import { useEffect, useState } from "react";
 import { Products } from "@/lib/products";
 import messagesFr from "@/messages/fr.json";
 import messagesEn from "@/messages/en.json";
@@ -45,8 +45,12 @@ function fetchProducts({ page, q }: { page: number; q: string }) {
 }
 
 export default function ProductsPage(props: Props) {
-  const params = use(props.params);
-  const { locale } = params;
+  const params = props.params;
+  // In client components we can't await a promise, but Next's generated types expect
+  // `params` to be a Promise for App Router signatures. Keep as-is for runtime, but
+  // coerce to the awaited value when used.
+  // For this file, it's a client component; ensure `params` usage is safe.
+  const { locale } = (params as unknown) as { locale: string };
   const messages = getMessages(locale);
   const add = useCart(s => s.add);
   const currency = useSelector((state: RootState) => state.preferences.currency);

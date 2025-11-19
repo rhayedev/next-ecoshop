@@ -26,7 +26,7 @@ async function networkFirst(req) {
     const cache = await caches.open(VERSION);
     cache.put(req, fresh.clone());
     return fresh;
-  } catch (e) {
+  } catch {
     const cache = await caches.open(VERSION);
     const cached = await cache.match(req);
     return cached || (req.mode === 'navigate' ? caches.match('/offline') : Response.error());

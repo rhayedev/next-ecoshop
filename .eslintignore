@@ -1,0 +1,6 @@
+/.history
+/.next
+/coverage
+/playwright-report
+/.vscode
+node_modules
