@@ -8,13 +8,13 @@ type NewsItem = {
   content?: string;
 };
 
-type Props = { params: Promise<{ id: string; locale: string }> };
+type Props = { params: { id: string; locale: string } };
 
 export const dynamic = "force-dynamic";
 export const revalidate = 30;
 
 export default async function NewsPage(props: Props) {
-  const params = await props.params;
+  const { params } = await props;
   const { id, locale } = params;
 
   // Utilise une URL absolue côté serveur

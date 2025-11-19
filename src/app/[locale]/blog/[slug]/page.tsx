@@ -7,7 +7,7 @@ type BlogPost = {
   excerpt?: string;
 };
 
-type Props = { params: Promise<{ slug: string; locale: string }> };
+type Props = { params: { slug: string; locale: string } };
 
 // Génère les chemins statiques à build-time
 export async function generateStaticParams() {
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 
 // Bonus : meta dynamique
 export async function generateMetadata(props: Props) {
-  const params = await props.params;
+  const { params } = await props;
   const post = (posts as BlogPost[]).find((p) => p.slug === params.slug);
   if (!post) return {};
   return {
@@ -26,7 +26,7 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function BlogPost(props: Props) {
-  const params = await props.params;
+  const { params } = await props;
   const post = (posts as BlogPost[]).find((p) => p.slug === params.slug);
   if (!post) throw new Error("Article introuvable");
 

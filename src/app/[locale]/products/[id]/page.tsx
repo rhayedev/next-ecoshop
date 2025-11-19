@@ -3,10 +3,10 @@ import Image from "next/image";
 import { Products } from "@/lib/products";
 import ProductPrice from "./ProductPrice";
 
-type Props = { params: Promise<{ id: string; locale?: string }> };
+type Props = { params: { id: string; locale?: string } };
 
 export default async function ProductDetail(props: Props) {
-  const params = await props.params;
+  const { params } = props;
   const product = Products.get(params.id);
 
   if (!product) {

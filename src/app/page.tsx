@@ -1,8 +1,14 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
 export default function HomePage() {
+  const t = useTranslations('home');
+
   return (
     <>
-      <h1>EcoShop</h1>
-      <p>Welcome to EcoShop — votre boutique éco-responsable.</p>
+      <h1>{t('title')}</h1>
+      <p>{t('description')}</p>
     </>
   );
 }
