@@ -18,3 +18,9 @@ export type CartState = {
   clearCart: () => void;
   total: number;
 };
+
+export type FakeStoreItem = {
+	id: number;
+	title: string;
+	price: number;
+};

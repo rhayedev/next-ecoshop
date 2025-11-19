@@ -1,4 +1,5 @@
 export type Product = { id: string; name: string; price: number };
+export type FakeStoreItem = { id: string; name: string; price: number };
 
 let DB: Product[] = [];
 
@@ -8,7 +9,7 @@ export const Products = {
 			const res = await fetch('https://fakestoreapi.com/products?limit=100', {
 				cache: 'no-store',
 			});
-			const data: any[] = await res.json();
+			const data: FakeStoreItem[] = await res.json();
 
 			DB = data.map((item) => ({
 				id: item.id.toString(),

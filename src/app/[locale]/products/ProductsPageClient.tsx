@@ -12,11 +12,9 @@ export default function ProductsPageClient() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const locale = params.locale;
 
   const initialPage = Number(searchParams.get('page') ?? 1);
   const initialQ = searchParams.get('q') ?? '';
-
   const [page, setPage] = useState(initialPage);
   const [q, setQ] = useState(initialQ);
 

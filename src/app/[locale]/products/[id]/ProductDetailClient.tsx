@@ -2,8 +2,10 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import AddToCartButton from "@/components/AddToCartButton";
+import type { Product } from "@/common/types";
 
-export default function ProductDetailClient({ product }: { product: any }) {
+
+export default function ProductDetailClient({ product }: { product: Product }) {
   const t = useTranslations('products');
 
   if (!product) {
