@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "products": "Produits",
+    "about": "À propos"
+  },
+  "home": {
+    "title": "Bienvenue sur EcoShop",
+    "description": "Exemple Next.js + TypeScript : routing, SEO, layouts, erreurs, i18n."
+  },
+  "products": { "title": "Nos produits" },
+  "about": { "title": "À propos" }
+}

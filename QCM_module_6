@@ -1,0 +1,51 @@
+QCM — Module 6 : Accessibilité & PWA (corrigé)
+1) Quel fichier décrit le nom, les icônes et le mode d’affichage d’une PWA ?
+[ ] A. service-worker.js
+[x] B. manifest.json
+[ ] C. next.config.js
+[ ] D. lighthouse.config.json
+2) Quel mode d’affichage rend l’app « indépendante » du navigateur (sans barre d’URL) ?
+[ ] A. minimal-ui
+[ ] B. fullscreen
+[x] C. standalone
+[ ] D. browser
+3) Quelle stratégie de cache convient le mieux aux pages HTML avec fallback offline ?
+[ ] A. Cache First
+[x] B. Network First
+[ ] C. Stale-While-Revalidate
+[ ] D. No Store
+4) Pour les images et les réponses d’API, on recommande souvent :
+[x] A. Stale-While-Revalidate
+[ ] B. Cache Only
+[ ] C. Network Only
+[ ] D. Network First
+5) Quel ratio de contraste minimal pour du texte normal selon WCAG AA ?
+[ ] A. 2.0:1
+[ ] B. 3.0:1
+[x] C. 4.5:1
+[ ] D. 7.0:1
+6) Quel outil lance un audit automatisé d’accessibilité directement dans Chrome ?
+[ ] A. axe-core/react
+[x] B. Lighthouse
+[ ] C. WebPageTest
+[ ] D. JMeter
+7) Quelle règle concernant les images décoratives ?
+[ ] A. Pas d’attribut alt
+[x] B. alt="" (vide)
+[ ] C. role="image"
+[ ] D. aria-hidden="false"
+8) Quel landmark indique la zone principale du contenu ?
+[ ] A. <header>
+[ ] B. <nav>
+[x] C. <main>
+[ ] D. <aside>
+9) Quel attribut relie formellement un label à son input ?
+[ ] A. name
+[x] B. for (et id correspondant)
+[ ] C. aria-labelledby obligatoirement
+[ ] D. role- [ ]
+10) Quelle propriété du manifest améliore l’affichage sur appareils Android à découpe ?
+[x] A. Icônes maskable
+[ ] B. display: minimal-ui
+[ ] C. orientation: landscape
+[ ] D. scope

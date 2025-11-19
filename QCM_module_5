@@ -1,0 +1,72 @@
+QCM — Module 5 : Gestion d’état et synchronisation des données
+Instructions
+Cochez la ou les bonnes réponses.
+Question 1
+Quelle affirmation décrit le mieux Zustand ?
+- [ ] A. Une solution de cache serveur.
+- [x] B. Une bibliothèque de gestion d’état globale simple et légère.
+- [ ] C. Un framework complet pour SSR.
+- [ ] D. Un outil pour gérer les formulaires.
+
+Question 2
+Quelle différence principale entre Zustand et Redux Toolkit (RTK) ?
+- [ ] A. Zustand impose l’utilisation de reducers.
+- [ ] B. RTK ne peut pas gérer plusieurs slices.
+- [x] C. RTK offre une meilleure intégration DevTools et middleware.
+- [ ] D. Zustand est plus verbeux que RTK.
+
+Question 3
+Dans Redux Toolkit, le fichier qui regroupe les actions et le reducer s’appelle :
+- [x] A. slice
+- [ ] B. store
+- [ ] C. module
+- [ ] D. context
+
+Question 4
+Le rôle principal de React Query est :
+- [ ] A. Stocker les préférences utilisateur.
+- [ ] B. Gérer les formulaires.
+- [ ] C. Créer des routes serveur. 
+- [x] D. Gérer le cache et la synchronisation des données distantes.
+
+Question 5
+Dans React Query, que permet l’option staleTime ?
+- [x] A. Définir la durée pendant laquelle une donnée est considérée fraîche.
+- [ ] B. Forcer une requête à chaque rendu.
+- [ ] C. Désactiver complètement le cache.
+- [ ] D. Définir le temps de timeout réseau.
+
+Question 6
+Quelle bibliothèque repose sur la stratégie stale‑while‑revalidate ?
+- [ ] A. React Query
+- [ ] B. Zustand
+- [ ] C. RTK Query 
+- [x] D. SWR
+
+Question 7
+Quelle est la source de vérité lorsqu’on synchronise des filtres de recherche avec l’URL ?
+- [ ] A. Le store global.
+- [ ] B. Le composant React local.
+- [x] C. L’URL elle‑même (searchParams).
+- [ ] D. Le serveur.
+
+Question 8
+Quel hook Next.js est utilisé pour modifier l’URL depuis un composant client ?
+- [ ] A. usePathname
+- [x] B. useRouter
+- [ ] C. useSearchParams
+- [ ] D. useParams
+
+Question 9
+Quelle bonne pratique pour séparer les états dans une application ?
+- [ ] A. Mettre tout dans Redux pour simplifier.
+- [x] B. Séparer UI local, store global et cache serveur.
+- [ ] C. Ne pas utiliser React Query et Zustand ensemble.
+- [ ] D. Utiliser le même store pour tout (panier, API, formulaires).
+
+Question 10
+Dans un contexte Ecoshop, quelles données relèvent typiquement du cache serveur (React Query) ?
+- [ ] A. Le thème choisi par l’utilisateur.
+- [ ] B. Le panier.
+- [x] C. La liste des produits.
+- [ ] D. La devise (EUR/USD).
