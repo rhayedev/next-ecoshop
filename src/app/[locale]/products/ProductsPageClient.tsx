@@ -13,8 +13,8 @@ export default function ProductsPageClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const initialPage = Number(searchParams.get('page') ?? 1);
-  const initialQ = searchParams.get('q') ?? '';
+  const initialPage = Number(searchParams?.get('page') ?? 1);
+  const initialQ = searchParams?.get('q') ?? '';
   const [page, setPage] = useState(initialPage);
   const [q, setQ] = useState(initialQ);
 
@@ -26,8 +26,8 @@ export default function ProductsPageClient() {
     if (q) paramsSearch.set('q', q);
     if (page > 1) paramsSearch.set('page', page.toString());
   
-    router.replace(`/${params.locale}/products?${paramsSearch.toString()}`);
-  }, [q, page, router, params.locale]);
+    router.replace(`/${params?.locale}/products?${paramsSearch.toString()}`);
+  }, [q, page, router, params?.locale]);
   
 
   if (isLoading) return <div>Chargement...</div>;

@@ -16,9 +16,9 @@ export const fetchProducts = async (page: number, q?: string): Promise<Product[]
 };
 
 export const useProducts = (page: number, q?: string) => {
-  return useQuery({
-    queryKey: ['products', page, q],
-    queryFn: () => fetchProducts(page, q),
-    keepPreviousData: true,
-  });
+	return useQuery({
+		queryKey: ['products', page, q],
+		queryFn: () => fetchProducts(page, q),
+		placeholderData: (previousData) => previousData,
+	});
 };

@@ -7,6 +7,5 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
-  const products = await Products.list();
-  return <ProductsPageClient products={products} />;
+  return <ProductsPageClient />;
 }

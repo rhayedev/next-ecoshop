@@ -2,9 +2,10 @@ import { Products } from '@/lib/products';
 import ProductDetailClient from './ProductDetailClient';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import type { PropsWithParams } from 'next-intl';
 
-type Props = PropsWithParams<{ id: string }>;
+type Props = {
+  params: { id: string };
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = params;

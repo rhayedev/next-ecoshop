@@ -1,5 +1,5 @@
 export type Product = { id: string; name: string; price: number };
-export type FakeStoreItem = { id: string; name: string; price: number };
+export type FakeStoreItem = { id: string; name: string; price: number, title: string };
 
 let DB: Product[] = [];
 
