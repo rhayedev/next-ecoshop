@@ -1,0 +1,27 @@
+{
+	"nav": {
+		"home": "Home",
+		"products": "Products",
+		"about": "About",
+		"blog": "Blog",
+		"news": "News",
+		"cart": "Cart"
+	},
+	"footer": {
+		"title": "Next Shop",
+		"description": "Your tech shop.",
+		"nav": {
+			"about": "About",
+			"products": "Products",
+			"blog": "Blog"
+		},
+		"copyright": "2025. All rights reserved"
+	},
+	"home": {
+		"title": "Welcome to Next Shop",
+		"description": "Next.js + TypeScript example: routing, SEO, layouts, errors, i18n."
+	},
+	"products": { "title": "Our Products" },
+	"about": { "title": "About" },
+    "cart" : "Cart"
+}
