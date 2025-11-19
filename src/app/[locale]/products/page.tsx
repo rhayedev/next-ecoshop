@@ -6,8 +6,10 @@ import CartSummary from '../../components/CartSummary';
 import Categories from '../../components/Categories';
 
 async function fetchProducts() {
-  const res = await fetch('/api/products');
-  if (!res.ok) throw new Error('Erreur de chargement des produits');
+  const res = await fetch('/api/products', {
+    next: { tags: ['products-api'] },
+  });
+  if (!res.ok) throw new Error(`Erreur de chargement des produits (status ${res.status})`);
   return res.json();
 }
 

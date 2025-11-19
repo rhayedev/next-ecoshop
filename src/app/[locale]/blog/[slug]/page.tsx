@@ -1,32 +1,39 @@
+// src/app/[locale]/blog/[slug]/page.tsx
+
 import posts from '@/data/posts.json';
 import { notFound } from 'next/navigation';
 
+type Post = {
+  slug: string;
+  title: string;
+  html: string;
+};
+
+type Props = { params: { slug: string } };
+
 export async function generateStaticParams() {
-  return posts.map((post) => ({
+  return (posts as Post[]).map((post) => ({
     slug: post.slug,
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = posts.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: Props) {
+  const post = (posts as Post[]).find((p) => p.slug === params.slug);
 
   if (!post) {
     return {
-      title: 'Article introuvable | Blog EcoShop'
+      title: 'Article introuvable | Blog EcoShop',
     };
   }
 
   return {
-    title: `${post.title} | Blog EcoShop`
+    title: `${post.title} | Blog EcoShop`,
+    description: post.title,
   };
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const post = posts.find((p) => p.slug === params.slug);
+export default async function BlogPost({ params }: Props) {
+  const post = (posts as Post[]).find((p) => p.slug === params.slug);
 
   if (!post) notFound();
 
