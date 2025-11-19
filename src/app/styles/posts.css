@@ -1,0 +1,45 @@
+.posts-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.posts-list li {
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.2s;
+}
+
+.posts-list li:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.posts-list h3 {
+  color: #1d4ed8;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.posts-list p {
+  color: #374151;
+}
+
+/************************/
+
+.post-article {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.post-article h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1d4ed8;
+}
+
+.post-article p {
+  color: #374151;
+  line-height: 1.6;
+}
