@@ -1,18 +1,10 @@
+import fs from "fs/promises";
+import path from "path";
+
 export default async function FetchProducts(id?: string) {
-    const res = await fetch(
-        `${
-            process.env.NODE_ENV === "development"
-                ? "http://localhost:3000"
-                : ""
-        }/api/products.json`,
-        {
-            next: { tags: ["products"] },
-        }
-    );
-
-    if (!res.ok) throw new Error("Impossible de charger les produits");
-
-    const allProducts = await res.json();
+    const filePath = path.join(process.cwd(), "public", "api", "products.json");
+    const data = await fs.readFile(filePath, "utf-8");
+    const allProducts = JSON.parse(data);
 
     if (id) {
         const product = allProducts.find((p: any) => p.id.toString() === id);

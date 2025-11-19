@@ -4,6 +4,7 @@ import ProductsList from "./ProductList";
 import Image from "next/image";
 import HeadphoneHero from "@/components/imgs/headphone-hero.webp";
 import QueryProvider from "@/app/providers/QueryProvider";
+import { Suspense } from "react";
 
 export default function ProductsLayout() {
     const t = useTranslations("products");
@@ -35,9 +36,13 @@ export default function ProductsLayout() {
                     priority={false}
                 />
             </div>
-            <Filters />
+            <Suspense fallback={<p>Chargement…</p>}>
+                <Filters />
+            </Suspense>
             <QueryProvider>
-                <ProductsList/>
+                <Suspense fallback={<p>Chargement…</p>}>
+                    <ProductsList />
+                </Suspense>
             </QueryProvider>
         </section>
     );
