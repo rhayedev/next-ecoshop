@@ -1,0 +1,60 @@
+import Link from "next/link";
+import HearthLogo from "@/components/icon/heartLogo";
+import { getTranslations } from "next-intl/server";
+import FetchProducts from "@/lib/ssrFetch";
+import dynamic from 'next/dynamic';
+import Image from "next/image";
+import { Product } from "@/lib/products";
+
+export const metadata = {
+    title: "Next Shop — Produits",
+    description: "Liste des produits",
+};
+
+export default async function ProductsPage() {
+    
+    const products = await FetchProducts();
+    const t = await getTranslations("products");
+
+    const ProductCharts = dynamic(() => import('@/app/[local]/products/ProductCharts'), {
+        loading: () => <p>Chargement du module…</p>,
+    });
+
+    return (
+        <ul className="flex-wrap flex justify-center gap-5">
+            <ProductCharts />
+            {products.map((p: Product) => (
+                <li key={p.id}>
+                    <Link href={`/products/${p.id}`}>
+                        <div className="w-72 bg-gray-100 hover:ring-[3px] trans-fast ring-violet-400 ring-offset-2 rounded-2xl p-6 overflow-hidden aspect-[9:16] group flex flex-col gap-2 relative">
+                            <div className="flex justify-between text-gray-500">
+                                <p>{p.name}</p>
+                                <p className="text-xl text-black font-semibold">
+                                    {p.price} €
+                                </p>
+                            </div>
+
+                            <div className="overflow-hidden p-10 rounded-xl bg-gray-100">
+                                <Image
+                                    src="https://cdn.cultura.com/cdn-cgi/image/width=830/media/pim/6925281988219.png"
+                                    alt=""
+                                    width={200}
+                                    className="grayscale-100 group-hover:grayscale-0 rounded-b-xl cursor-pointer trans-fast rounded-t-[4px]"
+                                />
+                            </div>
+
+                            <div className="flex gap-2 relative z-10 flex-center">
+                                <button className="trans-fast hover:bg-violet-300 hover:text-violet-700 text-violet-500 rounded-2xl px-6 h-10 hover:cursor-pointer bg-violet-200">
+                                    {t("add_to_bag")}
+                                </button>
+                                <button className="flex-center h-10 w-10 rounded-2xl hover:cursor-pointer bg-white border-red-100 border p-2 hover:bg-red-400 hover:text-red-100 text-red-400 trans-fast">
+                                    <HearthLogo />
+                                </button>
+                            </div>
+                        </div>
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    );
+}

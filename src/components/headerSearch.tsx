@@ -10,7 +10,7 @@ export default function HeaderSearch() {
             <input
                 type="search"
                 placeholder="Cats"
-                className="bg-white overflow-hidden h-10 group-hover:w-40 group-hover:pr-4 group-hover:pl-10 w-0 trans-fast outline-0 text-[#5f1a84] trans-fast rounded-full"
+                className="bg-white overflow-hidden h-10 w-full sm:group-hover:w-40 sm:pl-0 pl-10 sm:group-hover:pr-4 group-hover:pl-10 sm:w-0 trans-fast outline-0 text-[#5f1a84] trans-fast rounded-full"
             />
         </div>
     );

@@ -2,6 +2,8 @@ import Link from "next/link";
 import HearthLogo from "@/components/icon/heartLogo";
 import { getTranslations } from "next-intl/server";
 import FetchProducts from "@/lib/ssrFetch";
+import dynamic from 'next/dynamic';
+import Image from "next/image";
 
 export const metadata = {
     title: "Next Shop — Produits",
@@ -9,11 +11,17 @@ export const metadata = {
 };
 
 export default async function ProductsPage() {
+    
     const products = await FetchProducts();
     const t = await getTranslations("products");
 
+    const ProductCharts = dynamic(() => import('@/app/products/ProductCharts'), {
+        loading: () => <p>Chargement du module…</p>,
+    });
+
     return (
         <ul className="flex-wrap flex justify-center gap-5">
+            <ProductCharts />
             {products.map((p: any) => (
                 <li key={p.id}>
                     <Link href={`/products/${p.id}`}>
@@ -26,9 +34,10 @@ export default async function ProductsPage() {
                             </div>
 
                             <div className="overflow-hidden p-10 rounded-xl bg-gray-100">
-                                <img
+                                <Image
                                     src="https://cdn.cultura.com/cdn-cgi/image/width=830/media/pim/6925281988219.png"
                                     alt=""
+                                    width={200}
                                     className="grayscale-100 group-hover:grayscale-0 rounded-b-xl cursor-pointer trans-fast rounded-t-[4px]"
                                 />
                             </div>

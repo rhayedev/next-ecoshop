@@ -45,17 +45,17 @@ export default function LanguageSelector() {
     };
 
     return (
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative hidden sm:block" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center cursor-pointer px-2 py-2 rounded-md hover:bg-violet-800 trans-fast text-sm ${
+                className={`flex items-center cursor-pointer  pl-3 pr-2 gap-2 py-2 rounded-xl hover:bg-violet-800 trans-fast text-sm ${
                     isOpen && "bg-violet-800"
                 }`}
                 aria-expanded={isOpen}
                 aria-haspopup="true"
             >
                 <LanguageLogo className="w-4 h-4 mr-1" />
-                <span className="font-medium text-xs mr-1">
+                <span className="mr-1">
                     {currentLanguage.code.toUpperCase()}
                 </span>
                 <ChevronDown
@@ -66,7 +66,7 @@ export default function LanguageSelector() {
             </button>
 
             {isOpen && (
-                <div className="absolute z-50 mt-1 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg p-2 gap-2 flex flex-col w-40 min-w-max right-0">
+                <div className="absolute z-50 mt-1 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-2 gap-2 flex flex-col w-40 min-w-max right-0">
                     {languages.map((lang) => (
                         <button
                             key={lang.code}

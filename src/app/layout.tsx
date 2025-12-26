@@ -5,6 +5,7 @@ import "@/global.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
+import { reportWebVitals } from '@/app/client/reportWebVitals';
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -26,16 +27,25 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    if (typeof window !== 'undefined') reportWebVitals();
     return (
         <html lang="en">
+            <head>
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="theme-color" content="#4f46e5" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192.png" />
+                <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+            </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} p-5 bg-[#0c0c0c] max-w-screen overflow-x-hidden min-h-screen text-black antialiased`}
             >
                 <NextIntlClientProvider>
                     <Header />
-                    <div className="bg-[#fffcfc] py-5 px-40 h-full rounded-xl">
+                    <main className="bg-[#fffcfc] py-5 px-5 sm:px-40 h-full rounded-xl">
                         {children}
-                    </div>
+                    </main>
                     <Footer />
                 </NextIntlClientProvider>
             </body>

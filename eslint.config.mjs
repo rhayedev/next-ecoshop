@@ -1,28 +1,25 @@
-import eslintReact from "@eslint-react/eslint-plugin";
-import eslintJs from "@eslint/js";
-import { defineConfig } from "eslint/config";
-import tseslint from "typescript-eslint";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { FlatCompat } from "@eslint/eslintrc";
 
-export default defineConfig([
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    files: ["**/*.ts", "**/*.tsx"],
-
-    extends: [
-      eslintJs.configs.recommended,
-      tseslint.configs.recommended,
-      eslintReact.configs["recommended-typescript"],
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
     ],
-
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-
-    rules: {
-      "@eslint-react/no-missing-key": "warn",
-    },
   },
-]);
+];
+
+export default eslintConfig;

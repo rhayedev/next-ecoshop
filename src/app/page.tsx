@@ -4,7 +4,7 @@ export default async function HomePage() {
     const t = await getTranslations("home");
 
     return (
-        <div className="flex min-h-full gap-15 my-20">
+        <div className="flex min-h-full sm:gap-15 my-20">
             <h1 className="text-5xl text-nowrap font-extrabold text-violet-600">
                 {t("title")}
             </h1>
