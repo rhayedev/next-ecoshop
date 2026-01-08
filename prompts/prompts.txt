@@ -1,0 +1,60 @@
+Prompt n°1 - Composant React ProductCard :
+
+Rôle : Senior Frontend Developer. Contexte : Next.js 15 (App Router), TypeScript, Ecoshop.
+Tâche : Il va créer un composant React `ProductCard` qui affiche un produit avec props dont {name:string, price:number, onAdd:()=>void}.
+Règles :
+- Accessible : bouton avec aria-label, focus visible, contrast WCAG AA
+- Style minimal et sobres, pas de lib externe
+- Internationalisation (i18n) française
+- Typage strict TS
+- Fournir un petit exemple d’usage
+- Tests unitaires avec @testing-library/react pour vérification bouton et rendu
+Délivrables :
+- Fichier `ProductCard.tsx` autonome
+- Exemple d’intégration dans une page
+- Tests Jest associés
+
+Prompt n°2 - Store Zustand useCart :
+
+Rôle : Senior Frontend Developer. Contexte : Next.js 15, TypeScript, Ecoshop.
+Tâche : Il va créer un store Zustand `useCart` permettant de faire : add/remove/clear/total d’articles.
+Règles :
+- Persistance dans localStorage
+- Sélecteurs pour éviter re-renders inutiles
+- Typage strict, API claire
+- Pas de librairies externes autres que Zustand
+- Tests unitaires avec Jest pour toutes les méthodes
+Délivrables :
+- Fichier `app/stores/cart.ts`
+- Snippet d’intégration dans un composant
+- Tests Jest avec edge cases (panier vide, multiples ajouts)
+
+Prompt n°3 - Hook usePrice :
+
+Rôle : Senior Frontend Developer. Contexte : Next.js 15, TypeScript, Ecoshop.
+Tâche : Il va créer un hook `usePrice` qui formate un prix selon la devise passée.
+Règles :
+- Paramètres : price:number, currency:string (ex. 'EUR', 'USD')
+- Retour : string formaté, arrondi 2 décimales
+- Gestion des cas limites : prix négatif, null, undefined
+- Typage strict
+- Tests unitaires Jest avec @testing-library/react-hooks ou équivalent
+Délivrables :
+- Fichier `app/hooks/usePrice.ts`
+- Snippet d’utilisation
+- Tests couvrant cas classiques et limites
+
+Prompt n°4 - Hook usePrice :
+
+Rôle : Senior Frontend Developer. Contexte : Next.js 15, TypeScript, Ecoshop.
+Tâche : Il va théoriquement écrire des tests unitaires pour `ProductCard` et `useCart`.
+Règles :
+- Utiliser Jest + @testing-library/react
+- `ProductCard` : vérifier rendu du nom, prix, bouton "ajouter", accessibilité (aria-label)
+- `useCart` : vérifier add, remove, clear, total pour différents scénarios
+- Couvrir edge cases : panier vide, articles multiples, prix 0 ou négatifs
+- Tests déterministes, pas de random
+- Fournir snippets prêts à exécuter
+Délivrables :
+- Fichier `__tests__/ProductCard.test.tsx`
+- Fichier `__tests__/utils/cart.test.ts`

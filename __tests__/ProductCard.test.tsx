@@ -1,16 +1,17 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ProductCard from '../src/app/components/ProductCard';
+import { ProductCard } from '../src/app/components/ProductCard';
 
-test('affiche le nom et le prix', () => {
-  render(<ProductCard name="T-shirt" price={19.9} />);
-  expect(screen.getByText('T-shirt')).toBeInTheDocument();
-  expect(screen.getByText(/19\.90 €/)).toBeInTheDocument();
-});
+describe('ProductCard', () => {
+  it('affiche nom et prix', () => {
+    render(<ProductCard name="Test" price={10} onAdd={() => {}} />);
+    expect(screen.getByText('Test')).toBeInTheDocument();
+    expect(screen.getByText('10.00 €')).toBeInTheDocument();
+  });
 
-test('déclenche onAdd au clic', () => {
-  const onAdd = jest.fn();
-  render(<ProductCard name="T-shirt" price={19.9} onAdd={onAdd} />);
-  fireEvent.click(screen.getByRole('button', { name: /Ajouter au panier/i }));
-  expect(onAdd).toHaveBeenCalled();
+  it('bouton déclenche onAdd', () => {
+    const handleAdd = jest.fn();
+    render(<ProductCard name="Test" price={10} onAdd={handleAdd} />);
+    fireEvent.click(screen.getByRole('button', { name: /ajouter test au panier/i }));
+    expect(handleAdd).toHaveBeenCalledTimes(1);
+  });
 });
