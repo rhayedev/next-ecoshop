@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from "next-intl";
 import type { ReactNode } from "react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { CartProvider } from "@/app/components/CartContext";
 
 const MESSAGE_LOADERS: Record<string, () => Promise<any>> = {
   fr: () => import("@/messages/fr.json"),
@@ -24,9 +25,11 @@ export default async function LocaleLayout({
       locale={loader === MESSAGE_LOADERS.fr ? "fr" : locale}
       messages={messages}
     >
-      <Header />
-      <main className="container">{children}</main>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <main className="container">{children}</main>
+        <Footer />
+      </CartProvider>
     </NextIntlClientProvider>
   );
 }
